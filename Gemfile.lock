@@ -173,6 +173,8 @@ GEM
     tilt (2.0.9)
     trix (0.10.1)
       rails
+    trix-rails (0.11.4.1)
+      rails (> 4.1, < 6.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
@@ -215,6 +217,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   trix
+  trix-rails (~> 0.11.4.1)
   uglifier
   web-console (>= 3.3.0)
   webpacker

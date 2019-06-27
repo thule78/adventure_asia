@@ -13,8 +13,29 @@
     <%= f.input :name, label: 'Country Name', as: :select, :collection => ["Bhutan","Cambodia", "Laos", "Nepal", "Myanmar", "Thailand", "Vietnam"], class: 'form-control'%>
   </div>
   <div class="form-group">
-  <%= f.input :summary, label: 'summary', :as => :trix_editor, :input_html => {:rows => 7}, class: "form-control" %>
-</div>
+    <%= f.input :summary, label: 'summary', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :essential_info, label: 'Essential Info', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :getting_there, label: 'Getting There', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :getting_around, label: 'Getting Around', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :weather_climate, label: 'Weather & Climate', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :visa_permit, label: 'Visa & Permit', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :local_customs, label: 'Local customs', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :festival_events, label: 'Festival & Events', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+  </div>
 
   <%= f.submit class: 'btn btn-info' %>
   <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-outline-info' %>

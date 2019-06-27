@@ -8,6 +8,7 @@ class CountriesController < ApplicationController
   def show
     @country = Country.find(params[:id])
     authorize @country
+
   end
 
   def new
@@ -19,7 +20,7 @@ class CountriesController < ApplicationController
     @country = Country.new(country_params)
     authorize @country
     if @country.save
-      flash[:success] = "Category was created successfully"
+      flash[:success] = "Country was created successfully"
       redirect_to countries_path
     else
       render :new
@@ -42,14 +43,14 @@ class CountriesController < ApplicationController
   end
 
   def destroy
-    @country = Category.find(params[:id])
+    @country = Country.find(params[:id])
     authorize @country
     @country.destroy
     redirect_to countries_path
   end
 
   private
-  def category_params
+  def country_params
     params.require(:country).permit(:name, :summary, :essential_info, :getting_there,
                                     :getting_around, :weather_climate, :visa_permit,
                                     :local_customs, :festival_events)

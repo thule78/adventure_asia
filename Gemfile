@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'pundit'
 gem 'trix'
+gem 'trix-rails', '~> 0.11.4.1'
 
 
 group :development do

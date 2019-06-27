@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <% @countries.each do |country| %>
+    <%= link_to content_path(country), class:"content-card", :action => 'go' do %>
+    <div class="card m-3">
+      <div class="card-header">
+        Summary: <%= country.summary.first(70) %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= country.name %></h5>
+      </div>
+
+    </div>
+    <%end%>
+    <% end %>
+  </div>
+</div>
