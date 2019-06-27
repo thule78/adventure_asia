@@ -1,11 +1,13 @@
 <div class="container">
-  <h3><%= country.name %></h3>
-  <p><strong>Summary:</strong> <%= country.summary%></p>
-  <p><strong>Esstial Info:</strong> <%= country.essential_info%></p>
-  <p><strong>Getting There:</strong> <%= country.getting_there%></p>
-  <p><strong>Getting Around:</strong> <%= country.getting_around%></p>
-  <p><strong>Weather & Climate:</strong> <%= country.weather_climate%></p>
-  <p><strong>Visa & Permit:</strong> <%= country.visa_permit%></p>
-  <p><strong>Local Customs:</strong> <%= country.local_customs%></p>
-  <p><strong>Festival & Events:</strong> <%= country.festival_events%></p>
+
+  <h1><%= @country.name %></h1>
+  <%= cl_image_tag @country.photo, height: 250, width: 700, crop: :fill %> <br />
+  <p><strong>Summary:</strong> <%= @country.summary.html_safe%></p>
+  <p><strong>Esstial Info:</strong> <%= @country.essential_info.html_safe%></p>
+  <p><strong>Getting There:</strong> <%= @country.getting_there.html_safe%></p>
+  <p><strong>Getting Around:</strong> <%= @country.getting_around.html_safe%></p>
+  <p><strong>Weather & Climate:</strong> <%= @country.weather_climate.html_safe%></p>
+  <p><strong>Visa & Permit:</strong> <%= @country.visa_permit.html_safe%></p>
+  <p><strong>Local Customs:</strong> <%= @country.local_customs.html_safe%></p>
+  <p><strong>Festival & Events:</strong> <%= @country.festival_events.html_safe%></p>
 </div>

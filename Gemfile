@@ -18,6 +18,8 @@ gem 'webpacker'
 gem 'pundit'
 gem 'trix'
 gem 'trix-rails', '~> 0.11.4.1'
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
 
 
 group :development do

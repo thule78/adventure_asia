@@ -2,12 +2,25 @@
   <div class="row">
     <% @countries.each do |country| %>
     <%= link_to country_path(country), class:"content-card", :action => 'go' do %>
-    <div class="card m-3">
-      <div class="card-header">
-        Summary: <%= country.summary.first(70) %>
-      </div>
+    <div class="card m-3" style="width: 18rem;">
+      <%= cl_image_tag country.photo, class:"card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= country.name %></h5>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <% country.locations.each do |location|%>
+      <li><%= link_to location.name, location_path(location),class: "list-group-item" %></li>
+      <%end%>
+      </ul>
+
+      <div class="card-body">
+      <% if policy(Country).edit? %>
+      <%= link_to raw('<i class="far fa-edit"></i>'), edit_country_path(country), class: "mr-2" %>
+      <%end%>
+      <% if policy(Country).destroy? %>
+      <%= link_to raw('<i class="far fa-trash-alt"></i>'), country_path(country), method: "delete", data: { confirm: "Are you sure you want to delete '#{country.name}'?" } %>
+      <%end%>
       </div>
 
     </div>
