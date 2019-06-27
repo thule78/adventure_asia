@@ -13,15 +13,15 @@ class CountryPolicy < ApplicationPolicy
     true
   end
 
-  def create
-    record.user == user
+  def create?
+    user.admin?
   end
 
   def update?
-    true
+    user.admin?
   end
 
   def destroy?
-    true
+    user.admin?
   end
 end

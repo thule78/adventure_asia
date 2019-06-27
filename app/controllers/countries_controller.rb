@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  skip_before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_country, only: [:show, :edit, :update, :destroy]
 
   def index
     @countries = policy_scope(Country).order(created_at: :desc)
@@ -48,6 +48,13 @@ class CountriesController < ApplicationController
     @country.destroy
     redirect_to countries_path
   end
+
+  def set_country
+    @country = Country.find(params[:id])
+    @country = Country.find(params[:id])
+    authorize @country
+  end
+
 
   private
   def country_params

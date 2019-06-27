@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <% @countries.each do |country| %>
-    <%= link_to content_path(country), class:"content-card", :action => 'go' do %>
+    <%= link_to country_path(country), class:"content-card", :action => 'go' do %>
     <div class="card m-3">
       <div class="card-header">
         Summary: <%= country.summary.first(70) %>
