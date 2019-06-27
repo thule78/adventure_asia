@@ -6,6 +6,5 @@ class User < ApplicationRecord
   has_many :tours, class_name: "Tour", foreign_key: 'user_id'
   has_many :bookings, class_name: "Booking", foreign_key: "user_id"
 
-  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 end
