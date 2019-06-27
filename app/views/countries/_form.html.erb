@@ -1,0 +1,17 @@
+<%= simple_form_for(country) do |f|%>
+
+  <% if country.errors.any? %>
+    <div>
+      <ul>
+      <% country.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+    <% end %>
+  <div class="form-group">
+    <%= f.input :name, :placeholder => 'Category Name', class: 'form-control'%>
+  </div>
+  <%= f.submit class: 'btn btn-info' %>
+  <%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-outline-info' %>
+<% end %>
