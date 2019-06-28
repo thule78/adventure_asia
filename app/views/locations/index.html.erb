@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <% @locations.each do |location| %>
+    <%= link_to location_path(location), class:"content-card", :action => 'go' do %>
+    <div class="card m-3" style="width: 18rem;">
+      <%= cl_image_tag location.photo, class:"card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= location.name %></h5>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li><%= pluralize(location.tours.count, "article") %></li>
+      </ul>
+
+      <div class="card-body">
+      <% if policy(Location).edit? %>
+      <%= link_to raw('<i class="far fa-edit"></i>'), edit_location_path(location), class: "mr-2" %>
+      <%end%>
+      <% if policy(Location).destroy? %>
+      <%= link_to raw('<i class="far fa-trash-alt"></i>'), location_path(location), method: "delete", data: { confirm: "Are you sure you want to delete '#{location.name}'?" } %>
+      <%end%>
+      </div>
+
+    </div>
+    <%end%>
+    <% end %>
+  </div>
+</div>
+

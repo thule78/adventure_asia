@@ -10,4 +10,12 @@
   <p><strong>Visa & Permit:</strong> <%= @country.visa_permit.html_safe%></p>
   <p><strong>Local Customs:</strong> <%= @country.local_customs.html_safe%></p>
   <p><strong>Festival & Events:</strong> <%= @country.festival_events.html_safe%></p>
+  <div class="card-body">
+      <% if policy(@country).edit? %>
+      <%= link_to 'Edit', edit_country_path(@country), class: "btn btn-info" %>
+      <%end%>
+      <% if policy(@country).destroy? %>
+      <%= link_to 'Delete', country_path(@country), class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@country.name}'?" } %>
+      <%end%>
+      </div>
 </div>

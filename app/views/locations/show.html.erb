@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1><%= @location.name %></h1>
+  <%= cl_image_tag @location.photo, height: 250, width: 700, crop: :fill %> <br />
+  <p><strong>Summary:</strong> <%= @location.summary.html_safe%></p>
+  <p><strong>Sights:</strong> <%= @location.sights.html_safe%></p>
+  <div>
+    <% if policy(@location).edit? %>
+      <%= link_to "Edit", edit_location_path(@location), class: "btn btn-info" %>
+      <%end%>
+      <% if policy(@location).destroy? %>
+      <%= link_to "Delete", location_path(@location),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@location.name}'?" } %>
+      <%end%>
+  </div>
+</div>
+
