@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <% @activities.each do |activity| %>
+    <%= link_to activity_path(activity), class:"content-card", :action => 'go' do %>
+    <div class="card m-3" style="width: 18rem;">
+      <%= cl_image_tag activity.photo, class:"card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= activity.name %></h5>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li><%= pluralize(activity.tours.count, "tour") %></li>
+      </ul>
+
+      <div class="card-body">
+      <% if policy(Activity).edit? %>
+      <%= link_to raw('<i class="far fa-edit"></i>'), edit_activity_path(activity), class: "mr-2" %>
+      <%end%>
+      <% if policy(Activity).destroy? %>
+      <%= link_to raw('<i class="far fa-trash-alt"></i>'), activity_path(activity), method: "delete", data: { confirm: "Are you sure you want to delete '#{activity.name}'?" } %>
+      <%end%>
+      </div>
+
+    </div>
+    <%end%>
+    <% end %>
+  </div>
+</div>
+
+
