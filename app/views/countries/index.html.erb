@@ -13,7 +13,7 @@
       <li><%= link_to location.name, location_path(location),class: "list-group-item" %></li>
       <%end%>
       </ul>
-
+      <% if user_signed_in?%>
       <div class="card-body">
       <% if policy(Country).edit? %>
       <%= link_to raw('<i class="far fa-edit"></i>'), edit_country_path(country), class: "mr-2" %>
@@ -22,6 +22,7 @@
       <%= link_to raw('<i class="far fa-trash-alt"></i>'), country_path(country), method: "delete", data: { confirm: "Are you sure you want to delete '#{country.name}'?" } %>
       <%end%>
       </div>
+      <%end%>
 
     </div>
     <%end%>

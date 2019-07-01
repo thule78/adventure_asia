@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :bookings, class_name: "Booking", foreign_key: "user_id"
 
   validates :email, presence: true, uniqueness: true
+  validates :name, presence: true
 end
