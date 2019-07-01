@@ -7,6 +7,15 @@ class Tour < ApplicationRecord
 
   validates :name, presence: true
   validates :content, presence: true
+  validates :code, presence: true, uniqueness: true
+  validates :duration, presence: true
   validates :price, presence: true, numericality: {only_integer: true,
                                                     greater_than_or_equal_to: 30}
+
+  validates :photo, presence: true
+
+  mount_uploader :photo, PhotoUploader
+  mount_uploader :photo_1, PhotoUploader
+  mount_uploader :photo_2, PhotoUploader
+  mount_uploader :photo_3, PhotoUploader
 end

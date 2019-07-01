@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <% @tours.each do |tour| %>
+    <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
+    <div class="card m-3" style="width: 18rem;">
+      <%= cl_image_tag tour.photo, class:"card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= tour.name %></h5>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li><%= tour.location.country.name  %></li>
+        <li><%= cl_image_tag tour.activity.photo, height: 30, width: 30, crop: :fill  %><%= tour.activity.name%></li>
+        <li>US$ <%= tour.price %></li>
+        <li><%= tour.duration.first(6) %></li>
+      </ul>
+
+      <div class="card-body">
+      <% if policy(Tour).edit? %>
+      <%= link_to raw('<i class="far fa-edit"></i>'), edit_tour_path(tour), class: "mr-2" %>
+      <%end%>
+      <% if policy(Tour).destroy? %>
+      <%= link_to raw('<i class="far fa-trash-alt"></i>'), tour_path(tour), method: "delete", data: { confirm: "Are you sure you want to delete '#{tour.name}'?" } %>
+      <%end%>
+      </div>
+
+    </div>
+    <%end%>
+    <% end %>
+  </div>
+</div>
+

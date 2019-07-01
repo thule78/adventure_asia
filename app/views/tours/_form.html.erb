@@ -1,0 +1,85 @@
+<%= simple_form_for(tour) do |f|%>
+
+<% if tour.errors.any? %>
+<div>
+  <ul>
+    <% tour.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="form-group">
+  <%= f.input :name, label: 'Tour Name', class: 'form-control'%>
+</div>
+
+<div class="form-row">
+  <label>Activity:</label>
+  <div class="offset-sm-2 col-sm-8">
+    <%= f.collection_radio_buttons :activity_id, Activity.all, :id, :name, {},
+    {:class=>'form-check-input mr-1'} do |cb| %>
+    <div class="form-check form-check-inline">
+      <%= cb.label(class: "form-check-label pr-2") {cb.radio_button + cb.text} %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.input :location_id, collection: Country.all, as: :grouped_select, group_method: :locations, prompt: "Select Location" %>
+</div>
+
+<div class="form-group">
+  <%= f.input :content, label: 'Content', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.input :itinerary, label: 'Itinerary', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-4">
+    <%= f.input :code, label:'Code',class: 'form-control'%>
+  </div>
+  <div class="form-group col-md-4">
+    <%= f.input :price, label:'Price', class: 'form-control'%>
+  </div>
+  <div class="form-group col-md-4">
+    <%= f.input :duration, label:'Duration', :placeholder => '4 days | 3 night', class: 'form-control'%>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-4">
+    <%= f.input :style, label:'Style',class: 'form-control'%>
+  </div>
+  <div class="form-group col-md-4">
+    <%= f.input :theme, label:'Theme', class: 'form-control'%>
+  </div>
+  <div class="form-group col-md-4">
+    <%= f.input :comfort, label:'Comfort', class: 'form-control'%>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-3">
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+  <div class="form-group col-md-3">
+    <%= f.input :photo_1 %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+  <div class="form-group col-md-3">
+    <%= f.input :photo_2 %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+  <div class="form-group col-md-3">
+    <%= f.input :photo_3 %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+</div>
+<div class="form-group">
+    <%= f.input :start_end_des, label:'Start end Destination', :placeholder => 'Mai Chau | ChiangMai', class: 'form-control'%>
+  </div>
+
+<%= f.submit class: 'btn btn-info' %>
+<%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-outline-info' %>
+<% end %>
+
+
