@@ -1,0 +1,36 @@
+<%= simple_form_for(booking) do |f|%>
+
+<% if booking.errors.any? %>
+<div>
+  <ul>
+    <% booking.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="form-group">
+  <%= f.input :name, label: 'Your Name', class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%= f.input :email, label: 'Your Email', class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%=f.label 'When would you like to go?'%>
+  <%= f.date_field :date, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%= f.input :head_count, label: 'How many people in your group?', as: :select, collection: (2..10), default: 2, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%= f.input :hotel, label: 'What style of accomodation would suite you', as: :select, :collection => ["Luxury","Resort", "Botique", "Authentic"],default: "Luxury", class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%= f.input :note, label: 'Is there anything alse we need to know about before we help create your adventure?', :input_html => {:rows => 5}, class: "form-control" %>
+</div>
+
+<%= f.submit class: 'btn btn-info' %>
+<%= f.button :button, 'Cancel', type: :reset, class: 'btn btn-outline-info' %>
+<% end %>
+
+

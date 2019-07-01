@@ -1,75 +1,76 @@
 <div class="container">
   <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">OVERVIEW</a>
-    <a class="nav-item nav-link" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="false">FULL ITINERARY</a>
-    <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
-    <div class="tour-info">
-      cost US$ <%= @tour.price%> duration<%= @tour.duration%> activity <%= @tour.activity.name%> destination <%= @tour.location.country.name%> code <%= @tour.code%>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">OVERVIEW</a>
+      <a class="nav-item nav-link" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="false">FULL ITINERARY</a>
+      <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
+      <%= link_to "Book This Tour", new_tour_booking_path(@tour) %>
     </div>
-    <div class="tour photo">
-      <h1><%= @tour.name%></h1>
-      <%= cl_image_tag @tour.photo, height: 250, width: 700, crop: :fill%>
-    </div>
-    <div class="tour-about">
-      <p><%= @tour.content.html_safe%></p>
-    </div>
-    <div class="tour-related">
-      Tour Relate
-    </div>
-  </div>
-  <div class="tab-pane fade" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
-    <p><%= @tour.itinerary.html_safe%></p>
-  </div>
-  <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
-    <div class="row">
-  <div class="col-3">
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" id="v-pills-key_fact-tab" data-toggle="pill" href="#v-pills-key_fact" role="tab" aria-controls="v-pills-key_fact" aria-selected="true">Key Fact & Figure</a>
-      <a class="nav-link" id="v-pills-include-tab" data-toggle="pill" href="#v-pills-include" role="tab" aria-controls="v-pills-include" aria-selected="false">Include/Exclude</a>
-      <a class="nav-link" id="v-pills-visa-tab" data-toggle="pill" href="#v-pills-visa" role="tab" aria-controls="v-pills-visa" aria-selected="false">Visa</a>
-      <a class="nav-link" id="v-pills-weather-tab" data-toggle="pill" href="#v-pills-weather" role="tab" aria-controls="v-pills-weather" aria-selected="false">Weather</a>
-    </div>
-  </div>
-  <div class="col-9">
-    <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-key_fact" role="tabpanel" aria-labelledby="v-pills-key_fact-tab">
-        <ul>
-          <li>Destination: <%= @tour.location.country.name%></li>
-          <li>Start/End: <%= @tour.start_end_des%></li>
-          <li>Duration: <%= @tour.duration%></li>
-          <li>Activity: <%= @tour.activity%></li>
-          <li>Style: <%= @tour.style%></li>
-          <li>Theme: <%= @tour.theme%></li>
-          <li>Comfort: <%= @tour.comfort%></li>
-        </ul>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
+      <div class="tour-info">
+        cost US$ <%= @tour.price%> duration<%= @tour.duration%> activity <%= @tour.activity.name%> destination <%= @tour.location.country.name%> code <%= @tour.code%>
       </div>
-      <div class="tab-pane fade" id="v-pills-include" role="tabpanel" aria-labelledby="v-pills-include-tab">
-        <p>Include and Exclude</p>
+      <div class="tour photo">
+        <h1><%= @tour.name%></h1>
+        <%= cl_image_tag @tour.photo, height: 250, width: 700, crop: :fill%>
       </div>
-      <div class="tab-pane fade" id="v-pills-visa" role="tabpanel" aria-labelledby="v-pills-visa-tab">
-        <p><%= @tour.location.country.visa_permit.html_safe%></p>
+      <div class="tour-about">
+        <p><%= @tour.content.html_safe%></p>
       </div>
-      <div class="tab-pane fade" id="v-pills-weather" role="tabpanel" aria-labelledby="v-pills-weather-tab">
-        <p><%= @tour.location.country.weather_climate.html_safe%></p>
+      <div class="tour-related">
+        Tour Relate
       </div>
     </div>
+    <div class="tab-pane fade" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
+      <p><%= @tour.itinerary.html_safe%></p>
+    </div>
+    <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+      <div class="row">
+        <div class="col-3">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-key_fact-tab" data-toggle="pill" href="#v-pills-key_fact" role="tab" aria-controls="v-pills-key_fact" aria-selected="true">Key Fact & Figure</a>
+            <a class="nav-link" id="v-pills-include-tab" data-toggle="pill" href="#v-pills-include" role="tab" aria-controls="v-pills-include" aria-selected="false">Include/Exclude</a>
+            <a class="nav-link" id="v-pills-visa-tab" data-toggle="pill" href="#v-pills-visa" role="tab" aria-controls="v-pills-visa" aria-selected="false">Visa</a>
+            <a class="nav-link" id="v-pills-weather-tab" data-toggle="pill" href="#v-pills-weather" role="tab" aria-controls="v-pills-weather" aria-selected="false">Weather</a>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-key_fact" role="tabpanel" aria-labelledby="v-pills-key_fact-tab">
+              <ul>
+                <li>Destination: <%= @tour.location.country.name%></li>
+                <li>Start/End: <%= @tour.start_end_des%></li>
+                <li>Duration: <%= @tour.duration%></li>
+                <li>Activity: <%= @tour.activity.name%></li>
+                <li>Style: <%= @tour.style%></li>
+                <li>Theme: <%= @tour.theme%></li>
+                <li>Comfort: <%= @tour.comfort%></li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="v-pills-include" role="tabpanel" aria-labelledby="v-pills-include-tab">
+              <p>Include and Exclude</p>
+            </div>
+            <div class="tab-pane fade" id="v-pills-visa" role="tabpanel" aria-labelledby="v-pills-visa-tab">
+              <p><%= @tour.location.country.visa_permit.html_safe%></p>
+            </div>
+            <div class="tab-pane fade" id="v-pills-weather" role="tabpanel" aria-labelledby="v-pills-weather-tab">
+              <p><%= @tour.location.country.weather_climate.html_safe%></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-  </div>
-</div>
-<% if user_signed_in? %>
-<div>
+  <% if user_signed_in? %>
+  <div>
     <% if policy(@tour).edit? %>
-      <%= link_to "Edit", edit_tour_path(@tour), class: "btn btn-info" %>
-      <%end%>
-      <% if policy(@tour).destroy? %>
-      <%= link_to "Delete", tour_path(@tour),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@tour.name}'?" } %>
-      <%end%>
+    <%= link_to "Edit", edit_tour_path(@tour), class: "btn btn-info" %>
+    <%end%>
+    <% if policy(@tour).destroy? %>
+    <%= link_to "Delete", tour_path(@tour),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@tour.name}'?" } %>
+    <%end%>
   </div>
   <%end%>
 </div>
