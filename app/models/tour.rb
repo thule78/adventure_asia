@@ -18,4 +18,21 @@ class Tour < ApplicationRecord
   mount_uploader :photo_1, PhotoUploader
   mount_uploader :photo_2, PhotoUploader
   mount_uploader :photo_3, PhotoUploader
+
+  include PgSearch
+  pg_search_scope :search_for_tour,
+    against: [:name, :duration, :content, :style, :theme, :comfort, :itinerary ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  def unconfirmed_count
+    count = 0
+    self.bookings.each do |booking|
+      if booking.confirmed.nil?
+        count += 1
+      end
+    end
+    count
+  end
 end

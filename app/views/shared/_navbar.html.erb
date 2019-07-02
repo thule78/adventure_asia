@@ -73,7 +73,18 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH<span class="caret"></span></a>
 
       <ul  class="dropdown-menu">
-        <li><%= link_to "search form here",  class: "nav-link" %></li>
+        <div class="mr-4">
+      <%= form_for Tour.new, url: tours_path(anchor: 'tours'), method: :get do %>
+        <div class="d-flex">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control mr-2 ml-4",
+            placeholder: "Start exploring"
+          %>
+          <%= button_tag "Go!", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
       </ul>
 
     </li>
