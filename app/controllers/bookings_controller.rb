@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     authorize @booking
+    @tour = Tour.find(params[:tour_id])
   end
 
   def update
@@ -26,7 +27,6 @@ class BookingsController < ApplicationController
     authorize @booking
     @tour = Tour.find(params[:tour_id])
     @booking.tour_id = @tour.id
-    @booking.user_id = current_user
 
     if @booking.save
       flash[:success] = "Your booking was created successfully"
@@ -53,7 +53,7 @@ class BookingsController < ApplicationController
   def booking_params
     ### left it at name and photo for testing purposes
     ### include all params when ready
-    params.require(:booking).permit(:headcount, :date, :tour_id,
-                                    :comfirmed, :note, :user_id, :name, :email, :hotel)
+    params.require(:booking).permit(:head_count, :date, :tour_id,
+                                    :note, :name, :email, :hotel)
   end
 end

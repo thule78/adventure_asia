@@ -1,4 +1,4 @@
-<%= simple_form_for(booking) do |f|%>
+<%= simple_form_for [@tour, @booking] do |f|%>
 
 <% if booking.errors.any? %>
 <div>
@@ -9,6 +9,18 @@
   </ul>
 </div>
 <% end %>
+<div>
+  <ul>
+    <li>Price: US$ <%= @tour.price%>/person</li>
+    <li>Destination: <%= @tour.location.country.name%></li>
+    <li>Start/End: <%= @tour.start_end_des%></li>
+    <li>Duration: <%= @tour.duration%></li>
+    <li>Activity: <%= @tour.activity.name%></li>
+    <li>Style: <%= @tour.style%></li>
+    <li>Theme: <%= @tour.theme%></li>
+    <li>Comfort: <%= @tour.comfort%></li>
+  </ul>
+</div>
 <div class="form-group">
   <%= f.input :name, label: 'Your Name', class: 'form-control'%>
 </div>

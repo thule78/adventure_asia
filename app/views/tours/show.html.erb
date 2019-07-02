@@ -4,6 +4,7 @@
       <a class="nav-item nav-link active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">OVERVIEW</a>
       <a class="nav-item nav-link" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="false">FULL ITINERARY</a>
       <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
+      <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#nav-booking" role="tab" aria-controls="nav-booking" aria-selected="false">BOOK THIS TOUR</a>
       <%= link_to "Book This Tour", new_tour_booking_path(@tour) %>
     </div>
   </nav>
@@ -61,6 +62,11 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="tab-pane fade" id="nav-booking" role="tabpanel" aria-labelledby="nav-booking-tab">
+    <p>booking form</p>
+
+
     </div>
   </div>
   <% if user_signed_in? %>
