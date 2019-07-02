@@ -1,21 +1,83 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-  <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-  <% end %>
+
   <ul class="navbar-nav mr-auto">
-  <li class="nav-item dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View ... <span class="caret"></span></a>
+    <li class="nav-item dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FIND MY TRIP<span class="caret"></span></a>
 
-        <ul  class="dropdown-menu">
-          <li><%= link_to "Countries", countries_path, class: "nav-link" %></li>
-          <li><%= link_to "Locations", locations_path, class: "nav-link" %></li>
-          <li><%= link_to "Activities", activities_path, class: "nav-link" %></li>
-          <li><%= link_to "Tours", tours_path, class: "nav-link" %></li>
-        </ul>
+      <ul  class="dropdown-menu">
+        <li><%= link_to "Countries", countries_path, class: "nav-link" %></li>
+        <li><%= link_to "Locations", locations_path, class: "nav-link" %></li>
+        <li><%= link_to "Activities", activities_path, class: "nav-link" %></li>
+        <li><%= link_to "Tours", tours_path, class: "nav-link" %></li>
+      </ul>
 
-      </li>
-    </ul>
+    </li>
+  </ul>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DESTINATIONS<span class="caret"></span></a>
 
+      <ul  class="dropdown-menu activity-menu">
+        <%Country.all.each do |country|%>
+        <li><%= link_to country_path(country), class: "nav-link", :action => 'go' do %><%= country.name%><%end%>
+          <ul>
+            <% country.locations.each do |location|%>
+            <li><%=link_to location.name, location_path(location),  class: "nav-link"%></li>
+            <%end%>
+          </ul>
+        </li>
+
+        <%end%>
+      </ul>
+
+    </li>
+  </ul>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ACTIVITIES<span class="caret"></span></a>
+
+      <ul  class="dropdown-menu activity-menu">
+        <% Activity.all.each do |activity|%>
+
+        <li>
+          <%= link_to activity_path(activity), class: "nav-link", :action => 'go' do %>
+          <span class="icon"><%= cl_image_tag activity.photo%></span>
+          <span class="text"><%= link_to activity.name.upcase%></span>
+          <%end%>
+        </li>
+        <%end%>
+      </ul>
+
+    </li>
+  </ul>
+  <ul class="navbar-nav mr-auto logo-menu ">
+  <%= link_to "#", class: "navbar-brand" do %>
+  <span class="logo"><%= image_tag "logo.png"%></span>
+  <span class="text">Adventure Asia</span>
+
+  <% end %>
+  </ul>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ABOUT US<span class="caret"></span></a>
+
+      <ul  class="dropdown-menu">
+        <li><%= link_to "About Us",  class: "nav-link" %></li>
+        <li><%= link_to "Contact Us",class: "nav-link" %></li>
+      </ul>
+
+    </li>
+  </ul>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH<span class="caret"></span></a>
+
+      <ul  class="dropdown-menu">
+        <li><%= link_to "search form here",  class: "nav-link" %></li>
+      </ul>
+
+    </li>
+  </ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -35,19 +97,19 @@
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           <hr />
           <div>
-          <% if current_user.admin? %>
-          <%= link_to "New Country", new_country_path, class: "dropdown-item" %>
-          <%= link_to "New Location", new_location_path, class: "dropdown-item" %>
-          <%= link_to "New Activity", new_activity_path, class: "dropdown-item" %>
-          <%= link_to "New Tour", new_tour_path, class: "dropdown-item" %>
-          <%= link_to "Bookings", providers_bookings_path, class: "dropdown-item" %>
-        <% end %>
-      </div>
+            <% if current_user.admin? %>
+            <%= link_to "New Country", new_country_path, class: "dropdown-item" %>
+            <%= link_to "New Location", new_location_path, class: "dropdown-item" %>
+            <%= link_to "New Activity", new_activity_path, class: "dropdown-item" %>
+            <%= link_to "New Tour", new_tour_path, class: "dropdown-item" %>
+            <%= link_to "Bookings", providers_bookings_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
         </div>
       </li>
       <% else %>
       <li class="nav-item">
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <%= link_to "MY TRIP", new_user_session_path, class: "nav-link" %>
       </li>
       <% end %>
     </ul>
