@@ -33,8 +33,7 @@ class CountriesController < ApplicationController
   end
 
   def update
-    country = Country.find(params[:id])
-    authorize @country
+    set_country
     if  @country.update(country_params)
         redirect_to country_path
     else
@@ -43,8 +42,7 @@ class CountriesController < ApplicationController
   end
 
   def destroy
-    @country = Country.find(params[:id])
-    authorize @country
+    set_country
     @country.destroy
     redirect_to countries_path
   end
