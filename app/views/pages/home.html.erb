@@ -1,2 +1,43 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="panel">
+
+  </div>
+  <div class="recommend">
+
+  </div>
+  <div class="trending">
+
+  </div>
+
+
+  <div class="destinations">
+    <h3 class="home-title">browse by country</h3>
+    <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+      <div class="carousel-inner v-2" role="listbox">
+        <% Country.all.each.with_index(0) do |country, index| %>
+        <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+          <div class="col-12 col-md-4">
+            <div class="card mb-2">
+              <%= link_to country_path(country) do %>
+              <%= cl_image_tag country.photo, class: "card-img-top" %>
+              <div class="card-body">
+                <h4 class="card-title font-weight-bold"><%= country.name%></h4>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carousel-example-multi" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-example-multi" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+</div>
