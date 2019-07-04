@@ -5,7 +5,9 @@
     <div class="tour-card m-3" style="width: 18rem;">
       <%= cl_image_tag tour.photo %>
       <div class="tour-card-body">
-        <h2 class="tour-card-title"><%= tour.name %></h2>
+        <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
+        <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
+
       </div>
 
       <ul class="tour-card-list">

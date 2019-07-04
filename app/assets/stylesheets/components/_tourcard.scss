@@ -1,13 +1,29 @@
+.content-card:hover{
+  .tour-card{
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  .tour-card-title {
+    color: #E1B97B;
+  }
+}
 .tour-card {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-bottom: solid 1px #000;
 }
 
-.tour-card > img {
+.tour-card img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+}
+
+.tour-card-body {
+  display: block;
+  padding-top: 10px;
+  padding-left: 10px;
+  height: 50px;
+  border-bottom: solid 2px #000;
 }
 
 .tour-card-title {
@@ -16,11 +32,6 @@
   margin: 0;
 }
 
-.tour-card p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
 
 .tour-card-list {
 
@@ -29,21 +40,26 @@
   padding-left: 0;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 50px;
-  grid-gap: 1px;  /* the length of inner borders */
+  grid-gap: 1px;
   background-color: #000;
+  margin-bottom: 0px;
   .icon img{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
   }
   li {
     background-color: white;
     padding: 10px;
+    display: inline;
+    .icon{
+      padding-right: 10px;
+    }
   }
 
 }
 
 
-.tour-card .tour-card-infos {
+.tour-card .tour-card-body {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -51,9 +67,34 @@
   position: relative;
 }
 
-.tour-card-infos .tour-card-like {
+.tour-card-body .tour-card-like{
   position: absolute;
   right: 16px;
-  top: -20px;
-  width: 40px;
+  top: -26px;
+  width: 35px;
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #727272;
+  .tooltiptext{
+    visibility: hidden;
+    width: 150px;
+    background-color: #FF665E;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 4px;
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    left: -100px;
+  }
+}
+
+.tour-card-body .tour-card-like:hover {
+  color: red;
+  .tooltiptext {
+      visibility: visible;
+    }
 }
