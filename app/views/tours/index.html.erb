@@ -2,17 +2,18 @@
   <div class="row">
     <% @tours.each do |tour| %>
     <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
-    <div class="card m-3" style="width: 18rem;">
-      <%= cl_image_tag tour.photo, class:"card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= tour.name %></h5>
+    <div class="tour-card m-3" style="width: 18rem;">
+      <%= cl_image_tag tour.photo %>
+      <div class="tour-card-body">
+        <h2 class="tour-card-title"><%= tour.name %></h2>
       </div>
 
-      <ul class="list-group list-group-flush">
-        <li><%= tour.location.country.name  %></li>
-        <li><%= cl_image_tag tour.activity.photo, height: 30, width: 30, crop: :fill  %><%= tour.activity.name%></li>
-        <li>US$ <%= tour.price %></li>
-        <li><%= tour.duration.first(6) %></li>
+      <ul class="tour-card-list">
+        <li><span class="icon"><%= image_tag "pinpoint.svg"%></span>
+          <span class="name"><%= tour.location.country.name  %></span></li>
+        <li><span class="icon"><%= cl_image_tag tour.activity.photo%></span><span class="name"><%= tour.activity.name%></span></li>
+        <li><span class="icon"><%= image_tag "price.png"%></span><span class="name">US$ <%= tour.price %></span></li>
+        <li><span class="icon"><%= image_tag "calendar1.svg"%></span><span class="name"><%= tour.duration.first(6) %></span></li>
       </ul>
       <%if user_signed_in?%>
       <div class="card-body">
