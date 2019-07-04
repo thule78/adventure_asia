@@ -1,8 +1,8 @@
 
 .home-title{
-text-transform: uppercase;
-color: #DB9628;
-font-size: 24px;
+  text-transform: uppercase;
+  color: #DB9628;
+  font-size: 24px;
 }
 
 .panel {
@@ -10,7 +10,7 @@ font-size: 24px;
   .photo img{
     width: 100vw;
     height: 60vh;
-}
+  }
   .own-itinerary {
     font-size: 18px;
     font-weight: bold;
@@ -23,6 +23,20 @@ font-size: 24px;
     z-index: 1;
     top: 380px;
     right: 0px;
+  }
 }
+
+.recommend {
+  display: flex;
+  margin-top: 30px;
+  padding: 20px 30px;
+  background: -webkit-linear-gradient(right, #FAEDD9 50%, #fff 50%);
+  background: -o-linear-gradient(right, #FAEDD9 50%, #fff 50%);
+  background: -moz-linear-gradient(right, #FAEDD9 50%, #fff 50%);
+  background: linear-gradient(to right, #FAEDD9 50%, #fff 50%);
+  .text-content {
+    padding-top: 30px;
+    margin-right: 20px;
+  }
 }
 
