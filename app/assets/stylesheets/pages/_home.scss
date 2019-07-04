@@ -1,10 +1,28 @@
 
-.card-img {
-  object-fit: cover;
-  height: 250px;
-  width: 180px;
-  }
-.card-title {
-    color: #fff;
-  }
+.home-title{
+text-transform: uppercase;
+color: #DB9628;
+font-size: 24px;
+}
+
+.panel {
+  position: relative;
+  .photo img{
+    width: 100vw;
+    height: 60vh;
+}
+  .own-itinerary {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #DB9628;
+    background-color: #fff;
+    padding: 5px 30px;
+    position: absolute;
+    z-index: 1;
+    top: 380px;
+    right: 0px;
+}
+}
 
