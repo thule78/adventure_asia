@@ -1,6 +1,5 @@
 .btn-arrow {
-  padding-left: 48px;
-  padding-right: 8px;
+  padding: 8px 12px 8px 28px;
   border: solid 2px #DB9628;
   display: inline;
   vertical-align: middle;
@@ -10,4 +9,39 @@
  .btn-arrow:hover {
   background-color: #DB9628;
   color: #fff;
+ }
+
+ .btn-like {
+  margin-left: 12px;
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-color: white;
+  font-size: 28px;
+  text-align: center;
+  border-radius: 50%;
+  color: #727272;
+  position: relative;
+  .btn-like-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #FF665E;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 4px;
+    position: absolute;
+    z-index: 1;
+    top: -16px;
+    left: -40px;
+  }
+ }
+
+ .btn-like:hover{
+  color: red;
+  .btn-like-text {
+      visibility: visible;
+    }
  }

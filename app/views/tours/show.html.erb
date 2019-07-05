@@ -1,17 +1,65 @@
-<div class="container">
+<div class="wrapper">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">OVERVIEW</a>
       <a class="nav-item nav-link" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="false">FULL ITINERARY</a>
       <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
-      <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#nav-booking" role="tab" aria-controls="nav-booking" aria-selected="false">BOOK THIS TOUR</a>
-      <%= link_to "Book This Tour", new_tour_booking_path(@tour) %>
+      <div class="buttons">
+        <span class="button"><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
+        <span class="btn-like"><i class="far fa-heart"></i><span class="btn-like-text">Save for later</span></span>
+      </div>
+
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
-      <div class="tour-info">
-        cost US$ <%= @tour.price%> duration<%= @tour.duration%> activity <%= @tour.activity.name%> destination <%= @tour.location.country.name%> code <%= @tour.code%>
+      <div class="tour-infos">
+        <div class="info">
+          <div class="sign">
+            <span class="icon"><%= image_tag "price.png"%></span>
+            <span class="text">cost</span>
+          </div>
+          <div class="information">
+            <span>US$ <%= @tour.price%></span>
+          </div>
+        </div>
+        <div class="info">
+          <div class="sign">
+            <span class="icon"><%= image_tag "calendar1.svg"%></span>
+            <span class="text">duration</span>
+          </div>
+          <div class="information">
+            <span><%= @tour.duration.first(6)%></span>
+          </div>
+        </div>
+        <div class="info">
+          <div class="sign">
+            <span class="icon"></span>
+            <span class="text">activity</span>
+          </div>
+          <div class="information">
+            <span><%= @tour.activity.name%></span>
+          </div>
+        </div>
+        <div class="info">
+          <div class="sign">
+            <span class="icon"></span>
+            <span class="text">destination</span>
+          </div>
+          <div class="information">
+            <span><%= @tour.location.country.name%></span>
+          </div>
+        </div>
+        <div class="info">
+          <div class="sign">
+            <span class="icon"></span>
+            <span class="text">code</span>
+          </div>
+          <div class="information">
+            <span><%= @tour.code%></span>
+          </div>
+        </div>
+
       </div>
       <div class="tour photo">
         <h1><%= @tour.name%></h1>

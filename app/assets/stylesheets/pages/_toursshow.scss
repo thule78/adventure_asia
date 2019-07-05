@@ -1,0 +1,37 @@
+nav {
+  display: block;
+  height: 60px;
+  background-color: rgba(219,150,40,0.5);
+  padding-top: 18px;
+}
+
+.nav-tabs {
+    border-bottom: none;
+    width: 95vw;
+    margin: auto;
+    position: relative;
+    .nav-link.active{
+      color: #495057;
+      background-color: #fff;
+      border-color: #fff;
+    }
+    .buttons {
+      position: absolute;
+      top: -8px;
+      right: 8px;
+      display: flex;
+      flex-direction: row;
+      align-items:: center;
+
+    }
+}
+
+.tab-content {
+  width: 85vw;
+  margin: auto;
+}
+
+.tour-infos {
+  display: flex;
+  justify-content: space-between;
+}
