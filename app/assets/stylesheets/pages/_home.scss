@@ -1,4 +1,3 @@
-
 .home-title{
   text-transform: uppercase;
   color: #DB9628;
@@ -28,7 +27,7 @@
 
 .recommend {
   display: flex;
-  margin-top: 30px;
+  margin-top: 40px;
   padding: 20px 30px;
   background: -webkit-linear-gradient(right, #FAEDD9 50%, #fff 50%);
   background: -o-linear-gradient(right, #FAEDD9 50%, #fff 50%);
@@ -40,3 +39,21 @@
   }
 }
 
+.trending {
+  display: flex;
+  margin-top: 40px;
+  padding: 20px 30px;
+  background: -webkit-linear-gradient(left, #FAEDD9 50%, #fff 50%);
+  background: -o-linear-gradient(left, #FAEDD9 50%, #fff 50%);
+  background: -moz-linear-gradient(left, #FAEDD9 50%, #fff 50%);
+  background: linear-gradient(to left, #FAEDD9 50%, #fff 50%);
+  .text-content {
+    padding-top: 30px;
+    margin-right: 20px;
+  }
+}
+
+.destinations {
+  margin-top: 30px;
+  padding: 20px 30px;
+}

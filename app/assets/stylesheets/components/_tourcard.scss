@@ -78,16 +78,17 @@
   color: #727272;
   .tooltiptext{
     visibility: hidden;
-    width: 150px;
+    width: 120px;
     background-color: #FF665E;
     color: #fff;
     text-align: center;
+    font-size: 14px;
     border-radius: 6px;
     padding: 4px;
     position: absolute;
     z-index: 1;
-    top: -50px;
-    left: -100px;
+    top: -30px;
+    left: -70px;
   }
 }
 
