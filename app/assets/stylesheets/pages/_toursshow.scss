@@ -21,7 +21,7 @@ nav {
       right: 8px;
       display: flex;
       flex-direction: row;
-      align-items:: center;
+      align-items: center;
 
     }
 }
@@ -29,9 +29,76 @@ nav {
 .tab-content {
   width: 85vw;
   margin: auto;
+  .tour-title {
+    text-align: center;
+    color: #DB9628;
+  }
 }
 
 .tour-infos {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .sign {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .icon img {
+      width: 40px;
+      height: 40px;
+      opacity: 0.4;
+      }
+      .text {
+        font-size: 14px;
+        color: #838181;
+      }
+    }
+    .information {
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+  }
+}
+
+.tour-photo {
+  margin-top: 20px;
+  .w-100 {
+    height: 450px;
+    object-fit: cover;
+  }
+}
+
+.tour-about {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  .about-title {
+  color: #DB9628;
+  font-weight: bold;
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    justify-content: space-evenly;
+  }
+}
+
+.tour-related {
+  margin-top: 30px ;
+  padding: 30px;
+  background-color: #FAEDD9;
+  .tour-related-wrap {
+    width: 85vw;
+    margin: auto;
+    .tour-related-text {
+      color: #DB9628;
+      font-weight: bold;
+    }
+  }
 }
