@@ -4,82 +4,101 @@
     <h3><span class="own-itinerary">build your own itinerary<span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span></span></h3>
   </div>
 </div>
+<div class="wrapper">
 
-<div class="recommend">
-  <div class="text-content col-12 col-md-4">
-    <h2 class="home-title ">recommend by expertise</h2>
-    <p>Sed lobortis vestibulum dolor id tincidunt. In hendrerit, sapien ac consequat elementum, ante ante tempor massa, in ullamcorper risus lacus nec nisl</p>
-    <span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
-  </div>
-  <div class="recommend-tour">
-    <div class="row">
-      <% Tour.all.first(2).each do |tour| %>
-      <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
-      <div class="tour-card m-3" style="width: 18rem;">
-        <%= cl_image_tag tour.photo %>
-        <div class="tour-card-body">
-          <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
-          <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
-
-        </div>
-
-        <ul class="tour-card-list">
-          <li><span class="icon"><%= image_tag "pinpoint.svg"%></span>
-            <span class="name"><%= tour.location.country.name  %></span></li>
-            <li><span class="icon"><%= cl_image_tag tour.activity.photo%></span><span class="name"><%= tour.activity.name%></span></li>
-            <li><span class="icon"><%= image_tag "price.png"%></span><span class="name">US$ <%= tour.price %></span></li>
-            <li><span class="icon"><%= image_tag "calendar1.svg"%></span><span class="name"><%= tour.duration.first(6) %></span></li>
+  <div class="recommend">
+    <div class="text-content col-12 col-md-4">
+      <h2 class="home-title ">recommend by expertise</h2>
+      <p>Sed lobortis vestibulum dolor id tincidunt. In hendrerit, sapien ac consequat elementum, ante ante tempor massa, in ullamcorper risus lacus nec nisl</p>
+      <span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
+    </div>
+    <div class="recommend-tour">
+      <div class="row">
+        <% Tour.all.first(2).each do |tour| %>
+        <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
+        <div class="tour-card m-3" style="width: 18rem;">
+          <%= cl_image_tag tour.photo %>
+          <div class="tour-card-body">
+            <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
+            <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
+          </div>
+          <ul class="tour-card-list">
+            <li>
+              <span class="icon"><%= image_tag "pinpoint.svg"%></span>
+              <span class="name"><%= tour.location.country.name  %></span>
+            </li>
+            <li>
+              <span class="icon"><%= cl_image_tag tour.activity.photo%></span>
+              <span class="name"><%= tour.activity.name%></span>
+            </li>
+            <li>
+              <span class="icon"><%= image_tag "price.png"%></span>
+              <span class="name">US$ <%= tour.price %></span>
+            </li>
+            <li>
+              <span class="icon"><%= image_tag "calendar1.svg"%></span>
+              <span class="name"><%= tour.duration.first(6) %></span>
+            </li>
           </ul>
         </div>
         <%end%>
         <% end %>
       </div>
+    </div>
   </div>
-</div>
 
-<div class="trending">
-  <div class="recommend-tour">
-    <div class="row">
-      <% Tour.all.first(2).each do |tour| %>
-      <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
-      <div class="tour-card m-3" style="width: 18rem;">
-        <%= cl_image_tag tour.photo %>
-        <div class="tour-card-body">
-          <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
-          <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
+  <div class="trending">
+    <div class="recommend-tour">
+      <div class="row">
+        <% Tour.all.first(2).each do |tour| %>
+        <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
+        <div class="tour-card m-3" style="width: 18rem;">
+          <%= cl_image_tag tour.photo %>
+          <div class="tour-card-body">
+            <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
+            <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
+          </div>
 
-        </div>
-
-        <ul class="tour-card-list">
-          <li><span class="icon"><%= image_tag "pinpoint.svg"%></span>
-            <span class="name"><%= tour.location.country.name  %></span></li>
-            <li><span class="icon"><%= cl_image_tag tour.activity.photo%></span><span class="name"><%= tour.activity.name%></span></li>
-            <li><span class="icon"><%= image_tag "price.png"%></span><span class="name">US$ <%= tour.price %></span></li>
-            <li><span class="icon"><%= image_tag "calendar1.svg"%></span><span class="name"><%= tour.duration.first(6) %></span></li>
+          <ul class="tour-card-list">
+            <li>
+              <span class="icon"><%= image_tag "pinpoint.svg"%></span>
+              <span class="name"><%= tour.location.country.name  %></span>
+            </li>
+            <li>
+              <span class="icon"><%= cl_image_tag tour.activity.photo%></span>
+              <span class="name"><%= tour.activity.name%></span>
+            </li>
+            <li>
+              <span class="icon"><%= image_tag "price.png"%></span>
+              <span class="name">US$ <%= tour.price %></span>
+            </li>
+            <li>
+              <span class="icon"><%= image_tag "calendar1.svg"%></span>
+              <span class="name"><%= tour.duration.first(6) %></span>
+            </li>
           </ul>
         </div>
         <%end%>
         <% end %>
       </div>
+    </div>
+    <div class="text-content col-12 col-md-4">
+      <h2 class="home-title ">trending destinations</h2>
+      <p>Sed lobortis vestibulum dolor id tincidunt. In hendrerit, sapien ac consequat elementum, ante ante tempor massa, in ullamcorper risus lacus nec nisl</p>
+      <span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
+    </div>
   </div>
-  <div class="text-content col-12 col-md-4">
-    <h2 class="home-title ">recommend by expertise</h2>
-    <p>Sed lobortis vestibulum dolor id tincidunt. In hendrerit, sapien ac consequat elementum, ante ante tempor massa, in ullamcorper risus lacus nec nisl</p>
-    <span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
-  </div>
-</div>
 
-<div class="destinations">
-  <h2 class="home-title">browse by country</h2>
-  <div class="row">
-    <div class="col-md-12">
-
-      <div id="carousel" class="carousel slide" data-ride="false" data-type="multi">
-        <!--Controls-->
-        <div class="controls-top">
-          <a class="btn-floating" href="#carousel" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-          <a class="btn-floating" href="#carousel" data-slide="next"><i
-            class="fas fa-chevron-right"></i></a>
+  <div class="destinations">
+    <h2 class="home-title">browse by country</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="carousel" class="carousel slide" data-ride="false" data-type="multi">
+          <!--Controls-->
+          <div class="controls-top">
+            <a class="btn-floating" href="#carousel" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+            <a class="btn-floating" href="#carousel" data-slide="next"><i
+              class="fas fa-chevron-right"></i></a>
           </div>
           <!--/.Controls-->
           <div class="carousel-inner">
@@ -98,6 +117,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 
 </div>

@@ -25,9 +25,15 @@
   }
 }
 
+.wrapper {
+  display: flex;
+  justify-content: center; /* vertical */
+  flex-direction: column;
+  width: 100vw;
+}
 .recommend {
   display: flex;
-  margin-top: 40px;
+  margin: 40px auto;
   padding: 20px 30px;
   background: -webkit-linear-gradient(right, #FAEDD9 50%, #fff 50%);
   background: -o-linear-gradient(right, #FAEDD9 50%, #fff 50%);
@@ -41,7 +47,7 @@
 
 .trending {
   display: flex;
-  margin-top: 40px;
+  margin: 40px auto;
   padding: 20px 30px;
   background: -webkit-linear-gradient(left, #FAEDD9 50%, #fff 50%);
   background: -o-linear-gradient(left, #FAEDD9 50%, #fff 50%);
@@ -49,7 +55,7 @@
   background: linear-gradient(to left, #FAEDD9 50%, #fff 50%);
   .text-content {
     padding-top: 30px;
-    margin-right: 20px;
+    margin-left: 20px;
   }
 }
 
