@@ -111,10 +111,20 @@
       </div>
     </div>
     <div class="tab-pane fade" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
-      <p><%= @tour.itinerary.html_safe%></p>
+      <div class="tour-itinerary">
+        <div class="itinerary-content col-md-8">
+          <p><%= @tour.itinerary.html_safe%></p>
+        </div>
+        <div class="itinerary-photos col-md-4">
+          <span class="btn-arrow">DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i></span>
+          <div class="photos">
+            <%= cl_image_tag @tour.photo %>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
-      <div class="row">
+      <div class="tour-details-links row">
         <div class="col-3">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-key_fact-tab" data-toggle="pill" href="#v-pills-key_fact" role="tab" aria-controls="v-pills-key_fact" aria-selected="true">Key Fact & Figure</a>
@@ -123,27 +133,80 @@
             <a class="nav-link" id="v-pills-weather-tab" data-toggle="pill" href="#v-pills-weather" role="tab" aria-controls="v-pills-weather" aria-selected="false">Weather</a>
           </div>
         </div>
-        <div class="col-9">
+        <div class="tour-details-text col-8">
           <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-key_fact" role="tabpanel" aria-labelledby="v-pills-key_fact-tab">
-              <ul>
-                <li>Destination: <%= @tour.location.country.name%></li>
-                <li>Start/End: <%= @tour.start_end_des%></li>
-                <li>Duration: <%= @tour.duration%></li>
-                <li>Activity: <%= @tour.activity.name%></li>
-                <li>Style: <%= @tour.style%></li>
-                <li>Theme: <%= @tour.theme%></li>
-                <li>Comfort: <%= @tour.comfort%></li>
-              </ul>
+              <div class="tour-infos">
+                <div class="info">
+                  <div class="sign col-3">
+                    <span class="icon"><%= image_tag "pinpoint.svg"%></span>
+                    <span class="text">destination</span>
+                  </div>
+                  <div class="information col-8">
+                    <span><%= @tour.location.country.name%></span>
+                  </div>
+                </div>
+                <div class="info">
+                  <div class="sign col-3">
+                    <span class="icon"><%= image_tag "flag.svg"%></span>
+                    <span class="text">start/end point</span>
+                  </div>
+                  <div class="information col-8">
+                    <span><%= @tour.start_end_des%></span>
+                  </div>
+                </div>
+                <div class="info">
+                  <div class="sign col-3">
+                    <span class="icon"><%= image_tag "calendar1.svg"%></span>
+                    <span class="text">duration</span>
+                  </div>
+                  <div class="information col-8">
+                    <span><%= @tour.duration%></span>
+                  </div>
+                </div>
+                <div class="info">
+                  <div class="sign col-3">
+                    <span class="icon"><%= image_tag "style.svg"%></span>
+                    <span class="text">activity</span>
+                  </div>
+                  <div class="information col-8">
+                    <span><%= @tour.activity.name%></span>
+                  </div>
+                </div>
+                <div class="info">
+                  <div class="sign col-3">
+                    <span class="icon"><%= image_tag "fliplop.svg"%></span>
+                    <span class="text">comfort</span>
+                  </div>
+                  <div class="information col-8">
+                    <span><%= @tour.comfort%></span>
+                  </div>
+                </div>
+                <div class="info">
+                  <div class="sign col-3">
+                    <span class="icon"><%= image_tag "theme.svg"%></span>
+                    <span class="text">theme</span>
+                  </div>
+                  <div class="information col-8">
+                    <span><%= @tour.theme%></span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="tab-pane fade" id="v-pills-include" role="tabpanel" aria-labelledby="v-pills-include-tab">
-              <p>Include and Exclude</p>
+              <div class="tour-include">
+                <p>Include and Exclude</p>
+              </div>
             </div>
             <div class="tab-pane fade" id="v-pills-visa" role="tabpanel" aria-labelledby="v-pills-visa-tab">
-              <p><%= @tour.location.country.visa_permit.html_safe%></p>
+              <div class="tour-visa">
+                <p><%= @tour.location.country.visa_permit.html_safe%></p>
+              </div>
             </div>
             <div class="tab-pane fade" id="v-pills-weather" role="tabpanel" aria-labelledby="v-pills-weather-tab">
-              <p><%= @tour.location.country.weather_climate.html_safe%></p>
+             <div class="tour-weather">
+               <p><%= @tour.location.country.weather_climate.html_safe%></p>
+             </div>
             </div>
           </div>
         </div>

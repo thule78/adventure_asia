@@ -92,7 +92,7 @@ nav {
 .tour-related {
   margin-top: 30px ;
   padding: 30px;
-  background-color: #FAEDD9;
+  background-color: #fff;
   .tour-related-wrap {
     width: 85vw;
     margin: auto;
@@ -101,4 +101,52 @@ nav {
       font-weight: bold;
     }
   }
+}
+
+.tour-itinerary {
+  margin-top: 28px;
+  display: flex;
+  .itinerary-photos{
+    margin-top: 48px;
+    .photos img {
+      margin-top: 28px;
+      width: 250px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 7px;
+    }
+  }
+}
+
+.tour-details-links {
+  margin-top: 28px;
+  width: 85vw;
+  .nav-link.active{
+    color: #fff;
+    background-color: #DB9628;
+}
+}
+
+.tour-details-text {
+  .tour-infos{
+    display: flex;
+    flex-direction: column;
+    .info {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: row;
+      align-item: bottom;
+      .sign {
+        display: flex;
+        flex-direction: row;
+        .icon {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+.tour-include, .tour-visa, .tour-weather {
+  width: 70%;
 }
