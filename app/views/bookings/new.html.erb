@@ -1,4 +1,73 @@
-<div class="container">
-  <h1 class="mt-3">Designing Your Perfect Adventure</h1>
-  <%= render 'form', booking: @booking %>
+<div class="booking-new-nav-bar">
+  <div class="links">
+    <span class="button"><%= link_to raw('<i class="fas fa-long-arrow-alt-left"></i> TOUR DETAILS '), tour_path(@tour), class: "btn-arrow" %></span>
+    <span class="button"><%= link_to raw('PRIVATE TOUR <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
+  </div>
+
+</div>
+<div class="new-booking-form">
+  <h3 class=" form-title frmt-3">designing your perfect adventure with us</h3>
+  <div class="tour-infos">
+    <div class="info">
+      <div class="sign">
+        <span class="icon"><%= image_tag "pinpoint.svg"%></span>
+        <span class="text">destination</span>
+      </div>
+      <div class="information">
+        <span><%= @tour.location.country.name%></span>
+      </div>
+    </div>
+    <div class="info">
+      <div class="sign">
+        <span class="icon"><%= image_tag "flag.svg"%></span>
+        <span class="text">start/end point</span>
+      </div>
+      <div class="information">
+        <span><%= @tour.start_end_des%></span>
+      </div>
+    </div>
+    <div class="info">
+      <div class="sign">
+        <span class="icon"><%= image_tag "calendar1.svg"%></span>
+        <span class="text">duration</span>
+      </div>
+      <div class="information">
+        <span><%= @tour.duration%></span>
+      </div>
+    </div>
+    <div class="info">
+      <div class="sign">
+        <span class="icon"><%= image_tag "style.svg"%></span>
+        <span class="text">activity</span>
+      </div>
+      <div class="information">
+        <span><%= @tour.activity.name%></span>
+      </div>
+    </div>
+    <div class="info">
+      <div class="sign">
+        <span class="icon"><%= image_tag "fliplop.svg"%></span>
+        <span class="text">comfort</span>
+      </div>
+      <div class="information">
+        <span><%= @tour.comfort%></span>
+      </div>
+    </div>
+    <div class="info">
+      <div class="sign">
+        <span class="icon"><%= image_tag "theme.svg"%></span>
+        <span class="text">theme</span>
+      </div>
+      <div class="information">
+        <span><%= @tour.theme%></span>
+      </div>
+    </div>
+  </div>
+  <div class="intro-text">
+    <p>At Adventure Asia we can tailor-make your adventure exactly how you want it. Please Fill in the form below.</p>
+  </div>
+  <div class="form">
+    <%= render 'form', booking: @booking %>
+  </div>
+
 </div>
