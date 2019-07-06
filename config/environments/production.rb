@@ -92,4 +92,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #heroku sendgrid
+  config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.default_url_options = { :host => 'adventure-asia.herokuapp.com', :protocol => 'https'}
 end
