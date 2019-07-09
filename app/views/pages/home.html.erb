@@ -97,35 +97,24 @@
     </div>
   </div>
 
-  <div class="destinations">
+  <div class="destinations ">
     <h2 class="home-title">browse by country</h2>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="carousel" class="carousel slide" data-ride="false" data-type="multi">
-          <!--Controls-->
-          <div class="controls-top">
-            <a class="btn-floating" href="#carousel" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-            <a class="btn-floating" href="#carousel" data-slide="next"><i
-              class="fas fa-chevron-right"></i></a>
-          </div>
-          <!--/.Controls-->
-          <div class="carousel-inner">
-            <% Country.all.each.with_index(0) do |country, index| %>
-            <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
-              <div class="col-xs-4">
-                <%= link_to country_path(country) do %>
-                <%= cl_image_tag country.photo, class: "country-card-img" %>
-                <div class="card-img-overlay">
-                  <h4 class="country-card-title"><%= country.name%></h4>
-                </div>
-                <% end %>
-              </div>
-            </div>
-            <% end %>
-          </div>
+    <div class="cards">
+      <% Country.all.each do |country| %>
+      <div class="card">
+        <%= link_to country_path(country),class:"country-card", :action => 'go' do %>
+        <%= cl_image_tag country.photo, class: "img-responsive" %>
+        <div class="carousel-caption">
+          <h4 class="country-card-title"><%= country.name%></h4>
         </div>
+        <% end %>
       </div>
+
+      <% end %>
     </div>
+
+  </div>
+
   </div>
 
 </div>
