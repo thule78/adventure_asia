@@ -63,3 +63,51 @@
   margin-top: 30px;
   padding: 20px 30px;
 }
+
+.promo-countdown {
+  margin: 40px auto;
+  padding: 20px 30px;
+  width: 100vw;
+  background-color: #FAEDD9;
+    .main {
+    width: 85vw;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    }
+      h3 {
+        text-align: center;
+        font-size: 2em;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #DB9628;
+      }
+
+    #countdown {
+      color: #F6F4F3;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1em;
+      margin-top: 5%;
+    }
+
+    .days, .hours, .minutes, .seconds, .left {
+      display: inline-block;
+      padding: 20px;
+      width: 120px;
+      border-radius: 10px;
+    }
+
+    .days, .hours, .minutes, .seconds {
+      background: #FFB20C;
+    }
+
+    .left {
+      background: #DB9628;
+    }
+    .c-number {
+      color: #333;
+      font-size: 5em;
+    }
+}
