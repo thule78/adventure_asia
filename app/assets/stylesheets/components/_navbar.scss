@@ -8,9 +8,15 @@
 }
 
 .nav-item{
+  position: relative;
   a {color: #404040;}
   a:hover{
   color: #C4C4C4;
+  }
+  .dropdown-menu {
+    width: 100vw;
+    position: absolute;
+    top: 50px;
   }
 }
 
