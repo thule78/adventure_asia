@@ -111,3 +111,19 @@
       font-size: 5em;
     }
 }
+
+@media (max-width: 767px) {
+  .recommend, .trending {
+    display: block;
+    width: 95vw;
+    background: none;
+    margin-top: 20px;
+  }
+  .panel {
+    .own-itinerary {
+      .btn-arrow {
+        padding: 0px;
+      }
+    }
+  }
+}
