@@ -1,7 +1,31 @@
 <div class="panel">
   <div class="photo">
-    <%= image_tag "maichau-valley-vietnam-1.jpg"%>
-    <h3><span class="own-itinerary">build your own itinerary<span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span></span></h3>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <% Country.all.each.with_index(0) do |country, index| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index.zero? ? 'active' : '' %>"></li>
+        <% end %>
+      </ol>
+      <div class="carousel-inner">
+        <% Country.all.each.with_index(0) do |country, index| %>
+        <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+          <%= cl_image_tag(country.photo, class: 'd-block w-100') %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="home-search">
+      <%= form_for Tour.new, url: tours_path(anchor: 'tours'), method: :get do %>
+        <div class="d-flex">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control mr-2 ml-4",
+            placeholder: "Start exploring, destination, countries, and activities"
+          %>
+          <%= button_tag "Go!", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="wrapper">

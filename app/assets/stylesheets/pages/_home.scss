@@ -6,22 +6,17 @@
 
 .panel {
   position: relative;
-  .photo img{
+  .carousel-item img{
     width: 100vw;
     height: 60vh;
+    object-fit: cover;
   }
-  .own-itinerary {
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #DB9628;
-    background-color: #fff;
-    padding: 16px 28px;
+  .home-search {
     position: absolute;
     z-index: 1;
-    top: 360px;
-    right: 0px;
+    width: 50vw;
+    top: 180px;
+    left: 300px;
   }
 }
 
@@ -165,12 +160,21 @@
     margin-top: 20px;
   }
   .panel {
-    .own-itinerary {
-      .btn-arrow {
-        padding: 0px;
-      }
-    }
+  position: relative;
+  .carousel-item img{
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
   }
+  .home-search {
+    position: absolute;
+    z-index: 1;
+    width: 70vw;
+    top: 180px;
+    left: 25px;
+  }
+}
+
 
   .destinations {
   margin-top: 12px;
