@@ -99,13 +99,16 @@
 
   <div class="destinations ">
     <h2 class="home-title">browse by country</h2>
+    <span class="break"><%= image_tag "pinpoint.svg"%></span>
     <div class="cards">
       <% Country.all.each do |country| %>
       <div class="card">
         <%= link_to country_path(country),class:"country-card", :action => 'go' do %>
         <%= cl_image_tag country.photo, class: "img-responsive" %>
         <div class="carousel-caption">
+
           <h4 class="country-card-title"><%= country.name%></h4>
+          <p><%= pluralize(country.locations.count, "location") %> </p>
         </div>
         <% end %>
       </div>
