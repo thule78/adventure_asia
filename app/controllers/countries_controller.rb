@@ -57,7 +57,7 @@ class CountriesController < ApplicationController
   def country_params
     params.require(:country).permit(:name, :summary, :essential_info, :getting_there,
                                     :getting_around, :weather_climate, :visa_permit,
-                                    :local_customs, :festival_events, :photo)
+                                    :local_customs, :festival_events, :photo, :icon)
 
   end
 

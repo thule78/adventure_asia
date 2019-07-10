@@ -1,16 +1,259 @@
-<div class="container">
-  <div class="panel-photo">
+<div class="panel-photo">
     <%= cl_image_tag @country.photo %>
-    <span class="country-show-title"> <h1><%= @country.name %></h1></span>
+    <div class="country-show-title">
+      <span class="icon"><%= cl_image_tag @country.icon %></span>
+      <span class="name"><h1>Exploring <%= @country.name %></h1></span>
+    </div>
+
+</div>
+<div class="container">
+  <div class="country-show-summary">
+    <%= @country.summary.html_safe%>
   </div>
-  <p><strong>Summary:</strong> <%= @country.summary.html_safe%></p>
-  <p><strong>Esstial Info:</strong> <%= @country.essential_info.html_safe%></p>
-  <p><strong>Getting There:</strong> <%= @country.getting_there.html_safe%></p>
-  <p><strong>Getting Around:</strong> <%= @country.getting_around.html_safe%></p>
-  <p><strong>Weather & Climate:</strong> <%= @country.weather_climate.html_safe%></p>
-  <p><strong>Visa & Permit:</strong> <%= @country.visa_permit.html_safe%></p>
-  <p><strong>Local Customs:</strong> <%= @country.local_customs.html_safe%></p>
-  <p><strong>Festival & Events:</strong> <%= @country.festival_events.html_safe%></p>
+  <div class="country-show-infos">
+    <p>
+      <a class="read-more" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <span class="text">Read More</span>
+        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <div class="card-content">
+          <h3>Esstial Info:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.essential_info.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Esstial Info:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.essential_info.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Weather & Climate:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.weather_climate.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Weather Climate</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.weather_climate.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Visa & Permit:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.visa_permit.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Visa & Permit</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.visa_permit.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Festival & Events:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.festival_events.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Festival & Events:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.festival_events.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Local Customs:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.local_customs.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Local Customs:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.local_customs.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Getting There:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.getting_there.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Getting There:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.getting_there.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Getting Around:</h3>
+          <div class="short-content col-12 col-md-8">
+          <p><%= @country.getting_around.first(260).html_safe%></p>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#exampleModalLong">
+            Details <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Getting Around:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @country.getting_around.html_safe %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="photo col-12 col-md-4">
+
+          </div>
+        </div>
+      </div>
+        <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <span><i class="fas fa-chevron-up"></i></span>
+        <span>Close</span>
+      </button>
+    </div>
+  </div>
+  <div class="country-show-locations">
+
+  </div>
+
   <%if user_signed_in?%>
   <div class="card-body">
       <% if policy(@country).edit? %>
