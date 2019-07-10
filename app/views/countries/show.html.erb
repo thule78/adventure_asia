@@ -1,7 +1,8 @@
 <div class="container">
-
-  <h1><%= @country.name %></h1>
-  <%= cl_image_tag @country.photo, height: 250, width: 700, crop: :fill %> <br />
+  <div class="panel-photo">
+    <%= cl_image_tag @country.photo %>
+    <span class="country-show-title"> <h1><%= @country.name %></h1></span>
+  </div>
   <p><strong>Summary:</strong> <%= @country.summary.html_safe%></p>
   <p><strong>Esstial Info:</strong> <%= @country.essential_info.html_safe%></p>
   <p><strong>Getting There:</strong> <%= @country.getting_there.html_safe%></p>

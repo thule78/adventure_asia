@@ -1,0 +1,15 @@
+.panel-photo {
+  position: relative;
+  img {
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+  }
+  .home-search {
+    position: absolute;
+    z-index: 1;
+    width: 50vw;
+    top: 180px;
+    left: 300px;
+  }
+}
