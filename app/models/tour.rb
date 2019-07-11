@@ -19,9 +19,12 @@ class Tour < ApplicationRecord
   mount_uploader :photo_2, PhotoUploader
   mount_uploader :photo_3, PhotoUploader
 
+  acts_as_taggable_on :tags
+
   include PgSearch
   pg_search_scope :search_for_tour,
-    against: [:name, :duration, :content, :style, :theme, :comfort, :itinerary ],
+    against: [:name, :duration, :content, :style, :theme, :comfort, :itinerary],
+    associated_against: {:tags => [:name]},
     using: {
       tsearch: { prefix: true }
     }

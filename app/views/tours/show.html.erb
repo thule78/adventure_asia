@@ -218,7 +218,7 @@
     <h3 class="tour-related-text">Relate Tours</h3>
     <div class="recommend-tour">
       <div class="row">
-        <% Tour.all.first(3).each do |tour| %>
+        <% @related_tours.each do |tour| %>
         <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
         <div class="tour-card m-3" style="width: 18rem;">
           <%= cl_image_tag tour.photo %>

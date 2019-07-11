@@ -12,6 +12,7 @@ class ToursController < ApplicationController
 
   def show
     set_tour
+    @related_tours = @tour.find_related_tags
   end
 
   def new
@@ -60,6 +61,6 @@ class ToursController < ApplicationController
   def tour_params
     params.require(:tour).permit(:name, :content, :itinerary, :price, :code,
                     :duration, :style, :theme, :comfort, :start_end_des,
-                    :photo, :photo_1, :photo_2, :photo_3, :location_id, :activity_id)
+                    :photo, :photo_1, :photo_2, :photo_3, :location_id, :activity_id, :tag_list)
   end
 end

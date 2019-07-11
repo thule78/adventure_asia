@@ -33,6 +33,11 @@
 
       <div class="tour-list row">
         <% @tours.each do |tour| %>
+         <p>
+          <% tour.tag_list.each do |tag| %>
+          <%= link_to tag, tagged_path(tag: tag) %>
+          <% end %>
+        </p>
         <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
         <div class="tour-card m-3" style="width: 18rem;">
           <%= cl_image_tag tour.photo %>

@@ -27,6 +27,9 @@
 <div class="form-group">
   <%= f.input :location_id, collection: Country.all, as: :grouped_select, group_method: :locations, prompt: "Select Location" %>
 </div>
+<div class="form-group">
+   <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
+</div>
 
 <div class="form-group">
   <%= f.input :content, label: 'Content', :as => :trix_editor, :input_html => {:rows => 5}, class: "form-control" %>
