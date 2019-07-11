@@ -20,6 +20,7 @@ class Tour < ApplicationRecord
   mount_uploader :photo_3, PhotoUploader
 
   acts_as_taggable_on :tags
+  acts_as_likeable
 
   include PgSearch
   pg_search_scope :search_for_tour,

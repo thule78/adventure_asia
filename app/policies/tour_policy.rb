@@ -24,4 +24,9 @@ class TourPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def likes?
+    show?
+  end
+
 end

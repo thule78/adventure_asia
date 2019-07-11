@@ -6,8 +6,10 @@
       <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
       <div class="buttons">
         <span class="button"><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
-        <span class="btn-like"><i class="far fa-heart"></i><span class="btn-like-text">Save for later</span></span>
+        <span class="btn-like"><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(@tour) %><span class="btn-like-text">Like this</span></span>
       </div>
+
+
 
     </div>
   </nav>
@@ -218,7 +220,7 @@
     <h3 class="tour-related-text">Relate Tours</h3>
     <div class="recommend-tour">
       <div class="row">
-        <% @related_tours.each do |tour| %>
+        <% @related_tours.last(3).each do |tour| %>
         <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
         <div class="tour-card m-3" style="width: 18rem;">
           <%= cl_image_tag tour.photo %>

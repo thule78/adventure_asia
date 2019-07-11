@@ -51,10 +51,20 @@ class ToursController < ApplicationController
     redirect_to tours_path
   end
 
+  def likes
+    @user = current_user # before_action :authenticate_user, only: [:likes]
+    @tour = Tour.find(params[:id])
+    authorize @tour
+    @user.like!(@tour)
+    redirect_to tour_path, notice: "Liked this tour successfully!"
+  end
+
   def set_tour
     @tour = Tour.find(params[:id])
     authorize @tour
   end
+
+
 
   private
 
