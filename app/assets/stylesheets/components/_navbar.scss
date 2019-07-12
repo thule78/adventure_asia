@@ -139,6 +139,10 @@
 
  .dropdown-menu-right {
   right: -116px;
+    a {
+      width: 30vw;
+      display: block;
+    }
  }
 
  @media (max-width: 767px) {
@@ -161,4 +165,4 @@
   .dropdown-menu-right {
   right: 0px;
  }
- }
+}
