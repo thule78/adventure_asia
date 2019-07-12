@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #lazy user registration follow intruction on https://www.bignerdranch.com/blog/lazy-user-registration-for-rails-apps/
+   devise_for :users, controllers: {registrations: 'registrations'}
+
   root to: 'pages#home'
   get '/tagged', to: "tours#tagged", as: :tagged
   get 'tours/:id/likes', to: 'tours#likes', as: :likes
