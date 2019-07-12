@@ -15,16 +15,16 @@ class User < ApplicationRecord
   acts_as_liker
 
   #http://railscasts.com/episodes/393-guest-user-record
-  def self.new_guest
-    new { |u| u.guest = true }
-  end
+  # def self.new_guest
+  #   new { |u| u.guest = true }
+  # end
 
-  def name
-    guest ? "GUEST" : name
-  end
+  # def name
+  #   guest ? "GUEST" : name
+  # end
 
-  def move_to(user)
-    tasks.update_all(user_id: user.id)
-  end
+  # def move_to(user)
+  #   tasks.update_all(user_id: user.id)
+  # end
 
 end
