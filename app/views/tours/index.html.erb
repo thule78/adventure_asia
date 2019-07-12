@@ -33,7 +33,7 @@
 
       <div class="tour-list row">
         <% @tours.each do |tour| %>
-         <p>
+         <p class="tags">
           <% tour.tag_list.each do |tag| %>
           <%= link_to tag, tagged_path(tag: tag) %>
           <% end %>
@@ -43,7 +43,7 @@
           <%= cl_image_tag tour.photo %>
           <div class="tour-card-body">
             <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
-            <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
+            <span class="tour-card-like"><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(tour) %><span class="tooltiptext">Save for later</span></span>
           </div>
 
           <ul class="tour-card-list">

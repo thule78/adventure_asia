@@ -66,8 +66,9 @@
   position: relative;
 }
 
-.tour-card-body .tour-card-like{
-  position: absolute;
+.tour-card-body .tour-card-like {
+  a {
+    position: absolute;
   right: 16px;
   top: -26px;
   width: 35px;
@@ -76,6 +77,8 @@
   text-align: center;
   border-radius: 50%;
   color: #727272;
+  }
+
   .tooltiptext{
     visibility: hidden;
     width: 120px;

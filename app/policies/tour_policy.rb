@@ -26,7 +26,7 @@ class TourPolicy < ApplicationPolicy
   end
 
   def likes?
-    show?
+    true
   end
 
 end
