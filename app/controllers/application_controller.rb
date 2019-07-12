@@ -9,11 +9,8 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
   # Uncomment when you *really understand* Pundit!
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  #devise guest http://blog.shivamdaryanani.com/blog/2013/11/21/create-a-guest-user-record-with-devise/
-  def current_user
-    super || guest_user
-  end
+  #rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
 
   private
 
@@ -33,16 +30,5 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
-    #devise guest http://blog.shivamdaryanani.com/blog/2013/11/21/create-a-guest-user-record-with-devise/
-  def guest_user
-    User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
-  end
 
-  def create_guest_user
-    user = User.new { |user| user.guest = true }
-    user.email = "guest_#{Time.now.to_i}#{rand(99)}@example.com"
-    user.name = "GUEST"
-    user.save(:validate => false)
-    user
-  end
 end

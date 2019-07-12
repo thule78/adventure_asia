@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
@@ -26,13 +26,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     authorize @booking
     @tour = Tour.find(params[:tour_id])
-    @booking.tour_id = @tour.id
+    @booking.tour = @tour
 
     if @booking.save
       flash[:success] = "Your booking was created successfully"
       redirect_to tours_path
     else
-      render template: 'tours/show', alert: 'Invalid information.'
+      render :new
     end
   end
 
@@ -54,6 +54,6 @@ class BookingsController < ApplicationController
     ### left it at name and photo for testing purposes
     ### include all params when ready
     params.require(:booking).permit(:head_count, :date, :tour_id,
-                                    :note, :name, :email, :hotel)
+                                    :note, :name, :email, :hotel, :customer)
   end
 end

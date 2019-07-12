@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def name
-    guest ? "GUEST" : username
+    guest ? "GUEST" : name
   end
 
   def move_to(user)
