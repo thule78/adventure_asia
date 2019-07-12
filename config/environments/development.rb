@@ -60,8 +60,4 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #HEROKU SENDGRID
-  config.action_mailer.delivery_method = :test
-
-config.action_mailer.default_url_options = { :host => 'http://localhost:3000'}
 end
