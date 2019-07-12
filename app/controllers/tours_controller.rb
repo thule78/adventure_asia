@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :likes]
 
   def index
     if params[:query].present?
@@ -53,8 +53,7 @@ class ToursController < ApplicationController
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @tour = Tour.find(params[:id])
-    authorize @tour
+    set_tour
     @user.like!(@tour)
     redirect_to tour_path, notice: "Liked this tour successfully!"
   end

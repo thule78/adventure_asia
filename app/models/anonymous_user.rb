@@ -1,5 +1,5 @@
 class AnonymousUser < User
-  attr_accessible *ACCESSIBLE_ATTRS, :type, :token, as: :registrant
+  attr_accessible  :type, :token, as: :registrant
 
   def register(params)
     params = params.merge(type: 'User', token: nil)

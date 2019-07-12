@@ -25,7 +25,7 @@ class Tour < ApplicationRecord
   include PgSearch
   pg_search_scope :search_for_tour,
     against: [:name, :duration, :content, :style, :theme, :comfort, :itinerary],
-    associated_against: {:tags => [:name]},
+    associated_against: {:tags => [:name]},#search on tag
     using: {
       tsearch: { prefix: true }
     }
