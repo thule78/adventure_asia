@@ -52,7 +52,7 @@ class ToursController < ApplicationController
   end
 
   def likes
-    @user = current_user # before_action :authenticate_user, only: [:likes]
+    @user = current_or_guest_user # before_action :authenticate_user, only: [:likes]
     @tour = Tour.find(params[:id])
     authorize @tour
     @user.like!(@tour)

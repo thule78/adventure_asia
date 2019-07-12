@@ -10,4 +10,10 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   acts_as_liker
+
+  #devise guest http://blog.shivamdaryanani.com/blog/2013/11/21/create-a-guest-user-record-with-devise/
+  def move_to(user)
+    todos.update_all(user_id: user.id)
+  end
+
 end
