@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :current_user #devise guest http://blog.shivamdaryanani.com/blog/2013/11/21/create-a-guest-user-record-with-devise/
+
   include Pundit
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?

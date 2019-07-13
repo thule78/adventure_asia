@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #following http://railscasts.com/episodes/393-guest-user-record
-  attr_accessor :name, :email, :password
+  #attr_accessor :name, :email, :password
 
   has_many :tours, class_name: "Tour", foreign_key: 'user_id'
   has_many :bookings, class_name: "Booking", foreign_key: "user_id"

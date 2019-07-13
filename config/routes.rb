@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   resources :tours, only: [:index, :show, :new, :create, :update, :destroy, :edit] do
     resources :bookings, only: [:create, :new]
   end
-  resources :bookings, only: [:update, :destroy, :index]
+  resources :bookings, only: [:update, :destroy, :index, :show]
 
-  namespace :providers do
+  namespace :users do
     resources :bookings, only: [:index, :update, :destroy]
     resources :tours, only: [:index, :edit, :destroy]
   end
