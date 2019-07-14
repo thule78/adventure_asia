@@ -15,6 +15,7 @@
           <p>You don't have any upcoming tours. <%= link_to "Start exploring!", tours_path(anchor: "tours"), class: 'btn btn-info' %></p>
         <% else %>
           <ul class='list-group booking_list unconfirmed-bookings'>
+            <p>We're working on your requests, we'll email confirmation to you shortly. 📨 </p>
             <% current_user.bookings.where(confirmed: nil).each_with_index do |booking, index| %>
             <li class="mb-4 border-bottom pb-3">
             <%= link_to tour_path(booking.tour), class: "bookedtour", :action => 'go' do %>
@@ -23,7 +24,7 @@
               </h3>
             <% end %>
               <div>
-                <strong>Date: </strong><%= booking.nice_date %> | <strong>People:</strong> <%= booking.head_count %> | <strong>Price: $US</strong> <%= booking.tour.price %> | <strong>Total: $US</strong> <%= booking.tour.price * booking.head_count %>&nbsp;&nbsp;&nbsp;<%= link_to raw('<i class="fas fa-trash-alt"></i>'),  booking_path(booking), method: "delete", class: "text-dark", data: { confirm: "Are you sure you want to cancel your request for '#{booking.tour.name}'?" }%> <br>
+                <strong>Depature Date: </strong><%= booking.nice_date %> | <strong>People:</strong> <%= booking.head_count %> | <strong>Price: $US</strong> <%= booking.tour.price %> | <strong>Total: $US</strong> <%= booking.tour.price * booking.head_count %>&nbsp;&nbsp;&nbsp;<%= link_to raw('<i class="fas fa-trash-alt"></i>'),  booking_path(booking), method: "delete", class: "text-dark", data: { confirm: "Are you sure you want to cancel your request for '#{booking.tour.name}'?" }%> <br>
               </div>
               <div class="content_booking d-flex mt-3">
                 <%= cl_image_tag booking.tour.photo %>
@@ -62,10 +63,11 @@
         <% end %>
     </ul>
     <% else %>
-    <p>We're working on your requests, we'll emial confirmation to you shortly. 📨 </p>
+    <p>We're working on your requests, we'll email confirmation to you shortly. 📨 </p>
     <% end %>
   <% end %>
   </div>
+  <%= link_to raw('<i class="fas fa-long-arrow-alt-left"></i> View more advenutres '), tours_path, class: "btn-arrow"%>
   <div class="tab-content" id="pills-tabContent">
 </div>
 
