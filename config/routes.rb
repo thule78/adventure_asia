@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:update, :destroy, :index, :show]
 
-  namespace :users do
+  namespace :providers do
     resources :bookings, only: [:index, :update, :destroy]
     resources :tours, only: [:index, :edit, :destroy]
   end

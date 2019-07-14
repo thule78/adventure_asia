@@ -27,10 +27,11 @@ class BookingsController < ApplicationController
     authorize @booking
     @tour = Tour.find(params[:tour_id])
     @booking.tour = @tour
+    @booking.customer = current_user
 
     if @booking.save
       flash[:success] = "Your booking was created successfully"
-      redirect_to tours_path
+      redirect_to bookings_path
     else
       render :new
     end
@@ -52,6 +53,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:head_count, :date,
-                  :note, :name, :email, :hotel, :confirmed)
+                  :note, :name, :email, :hotel)
   end
 end
