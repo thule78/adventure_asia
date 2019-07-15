@@ -101,33 +101,32 @@
           <hr />
           <div>
             <% if current_user.admin? %>
-              <% var = current_user %>
-              <%if var.tours.any? %>
+            <% var = current_user %>
+            <%if var.tours.any? %>
             <% if Booking.has_unconfirmed_requests?(current_user) %>
-                  <% total_requests = 0 %>
-                  <% current_user.tours.each do |tour| %>
-                    <% tour.bookings.each do |booking| %>
-                      <% if booking.confirmed.nil? %>
-                        <% total_requests += 1 %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-                <% unless total_requests.nil? %>
-                  <i class="fas fa-bell"></i>
-                <% end %>
+            <% total_requests = 0 %>
+            <% current_user.tours.each do |tour| %>
+            <% tour.bookings.each do |booking| %>
+            <% if booking.confirmed.nil? %>
+            <% total_requests += 1 %>
+            <% end %>
+            <% end %>
+            <% end %>
+            <% end %>
             <% unless total_requests.nil? %>
-                    <%= link_to raw("Booking requests <span id='num-requests'>#{total_requests}</span>"), providers_bookings_path, class: "dropdown-item" %>
-                  <% else %>
-                    <%= link_to raw("Booking requests"), providers_bookings_path, class: "dropdown-item" %>
-                  <% end %>
+            <i class="fas fa-bell"></i>
+            <% end %>
+            <% unless total_requests.nil? %>
+            <%= link_to raw("Booking requests <span id='num-requests'>#{total_requests}</span>"), providers_bookings_path, class: "dropdown-item" %>
+            <% else %>
+            <%= link_to raw("Booking requests"), providers_bookings_path, class: "dropdown-item" %>
             <% end %>
             <% end %>
-
             <%= link_to "New Country", new_country_path, class: "dropdown-item" %>
             <%= link_to "New Location", new_location_path, class: "dropdown-item" %>
             <%= link_to "New Activity", new_activity_path, class: "dropdown-item" %>
             <%= link_to "New Tour", new_tour_path, class: "dropdown-item" %>
+            <% end %>
 
           </div>
         </div>
