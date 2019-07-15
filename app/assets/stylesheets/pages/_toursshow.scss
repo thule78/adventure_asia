@@ -10,14 +10,21 @@ nav {
     width: 95vw;
     margin: auto;
     position: relative;
-    .nav-link.active{
+    .nav-link-tour-show {
+      display: block;
+      padding: 10px;
+    }
+
+    :hover {
+      background-color: #fff;
+    }
+    .nav-link-tour-show.active{
       color: #495057;
       background-color: #fff;
-      border-color: #fff;
     }
     .buttons {
       position: absolute;
-      top: -8px;
+      top: -12px;
       right: 8px;
       display: flex;
       flex-direction: row;

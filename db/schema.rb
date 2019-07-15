@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_10_052925) do
+=======
+ActiveRecord::Schema.define(version: 2019_07_13_053943) do
+>>>>>>> cab5914bad85840f6a60df39f140b9727050d7e2
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_07_10_052925) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "tour_id"
     t.date "date"
     t.integer "head_count"
     t.boolean "confirmed"
@@ -35,6 +38,9 @@ ActiveRecord::Schema.define(version: 2019_07_10_052925) do
     t.string "name"
     t.string "email"
     t.string "hotel"
+    t.bigint "tour_id"
+    t.index ["tour_id"], name: "index_bookings_on_tour_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -51,6 +57,19 @@ ActiveRecord::Schema.define(version: 2019_07_10_052925) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.string "icon"
+<<<<<<< HEAD
+=======
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "liker_type"
+    t.integer "liker_id"
+    t.string "likeable_type"
+    t.integer "likeable_id"
+    t.datetime "created_at"
+    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
+    t.index ["liker_id", "liker_type"], name: "fk_likes"
+>>>>>>> cab5914bad85840f6a60df39f140b9727050d7e2
   end
 
   create_table "locations", force: :cascade do |t|
@@ -62,6 +81,31 @@ ActiveRecord::Schema.define(version: 2019_07_10_052925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+  end
+
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "tours", force: :cascade do |t|
@@ -84,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_052925) do
     t.string "photo_1"
     t.string "photo_2"
     t.string "photo_3"
+    t.index ["user_id"], name: "index_tours_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,9 +144,11 @@ ActiveRecord::Schema.define(version: 2019_07_10_052925) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean "guest", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "tours"
 end

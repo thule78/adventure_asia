@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #lazy user registration follow intruction on https://www.bignerdranch.com/blog/lazy-user-registration-for-rails-apps/
+   devise_for :users
+
   root to: 'pages#home'
+  get '/tagged', to: "tours#tagged", as: :tagged
+  get 'tours/:id/likes', to: 'tours#likes', as: :likes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show]
   resources :countries, only: [:index, :show, :new, :create, :update, :destroy, :edit]
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
   resources :tours, only: [:index, :show, :new, :create, :update, :destroy, :edit] do
     resources :bookings, only: [:create, :new]
   end
-  resources :bookings, only: [:update, :destroy, :index]
+  resources :bookings, only: [:update, :destroy, :index, :show]
 
   namespace :providers do
     resources :bookings, only: [:index, :update, :destroy]

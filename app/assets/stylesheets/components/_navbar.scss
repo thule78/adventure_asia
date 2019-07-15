@@ -5,6 +5,7 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  width: 95vw;
 }
 
 .navbar-nav {
@@ -136,13 +137,21 @@
   }
  }
 
+ .dropdown-menu-right {
+  right: -116px;
+    a {
+      width: 30vw;
+      display: block;
+    }
+ }
+
  @media (max-width: 767px) {
   .dropdown-menu.show {
     display: block;
     width: 90vw;
     margin: auto;
     position: static;
-}
+  }
   .logo-menu {
     display: none;
   }
@@ -152,4 +161,8 @@
   .search-bar {
     padding: 10px;
   }
+
+  .dropdown-menu-right {
+  right: 0px;
  }
+}

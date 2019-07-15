@@ -1,12 +1,16 @@
 <div class="booking-new-nav-bar">
   <div class="links">
     <span class="button"><%= link_to raw('<i class="fas fa-long-arrow-alt-left"></i> TOUR DETAILS '), tour_path(@tour), class: "btn-arrow" %></span>
-    <span class="button"><%= link_to raw('PRIVATE TOUR <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
+    <span class="button"><%= link_to raw('PRIVATE TOUR <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_path(@tour), class: "btn-arrow" %></span>
   </div>
 
 </div>
 <div class="new-booking-form">
-  <h3 class=" form-title frmt-3">designing your perfect adventure with us</h3>
+  <div class="intro-text">
+    <h3 class=" form-title frmt-3"><%= @tour.name %></h3>
+    <p></p>
+    <p>Designing your perfect adventure with us. At Adventure Asia we can tailor-make your adventure exactly how you want it. Please Fill in the form below.</p>
+  </div>
   <div class="tour-infos">
     <div class="info">
       <div class="sign">
@@ -63,9 +67,7 @@
       </div>
     </div>
   </div>
-  <div class="intro-text">
-    <p>At Adventure Asia we can tailor-make your adventure exactly how you want it. Please Fill in the form below.</p>
-  </div>
+
   <div class="form">
     <%= render 'form', booking: @booking %>
   </div>
