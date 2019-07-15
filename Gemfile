@@ -24,10 +24,12 @@ gem 'pg_search'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem "socialization"
 gem 'devise-guests', '~> 0.7.0'
+gem 'postmark-rails'
 
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'letter_opener'
 end
 
 group :development, :test do

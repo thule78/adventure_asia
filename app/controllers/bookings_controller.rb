@@ -31,6 +31,8 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash[:success] = "Your booking was created successfully"
+      mail = BookingMailer.with(booking: @booking).request
+      mail.deliver_now
       redirect_to bookings_path
     else
       render :new
