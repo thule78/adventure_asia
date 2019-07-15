@@ -28,7 +28,7 @@
 }
 .recommend {
   display: flex;
-  margin: 40px auto;
+  margin: 16px auto;
   padding: 20px 30px;
   background: -webkit-linear-gradient(right, #FAEDD9 50%, #fff 50%);
   background: -o-linear-gradient(right, #FAEDD9 50%, #fff 50%);
@@ -42,7 +42,7 @@
 
 .trending {
   display: flex;
-  margin: 40px auto;
+  margin: 16px auto;
   padding: 20px 30px;
   background: -webkit-linear-gradient(left, #FAEDD9 50%, #fff 50%);
   background: -o-linear-gradient(left, #FAEDD9 50%, #fff 50%);
@@ -55,7 +55,7 @@
 }
 
 .destinations {
-  margin-top: 30px;
+  margin-top: 16px;
   padding: 20px 30px;
   text-align: center;
   width: 90vw;
@@ -105,7 +105,7 @@
 }
 
 .promo-countdown {
-  margin: 40px auto;
+  margin: 16px auto;
   padding: 20px 30px;
   width: 100vw;
   background-color: #FAEDD9;

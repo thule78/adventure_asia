@@ -1,12 +1,12 @@
-<div class="wrapper">
+<div class="tourshow-wrapper">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link-tour-show active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">OVERVIEW</a>
       <a class="nav-item nav-link-tour-show" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="false">FULL ITINERARY</a>
       <a class="nav-item nav-link-tour-show" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
       <div class="buttons">
-        <span class="button"><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
-        <span class="btn-like"><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(@tour) %><span class="btn-like-text">Save for later</span></span>
+        <span><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
+        <span><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(@tour), class: "btn-like" %><span class="btn-like-text">Save for later</span></span>
       </div>
 
 
