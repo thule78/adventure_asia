@@ -92,7 +92,7 @@ Rails.application.configure do
 
   #sendgrid follow https://medium.com/le-wagon/how-to-send-email-with-action-mailer-and-sendgrid-in-rails-5-32ed0c9167fd
   config.action_mailer.delivery_method = :smtp
-config.action_mailer.default_url_options = { host: "http://adventure.asia" }
+  config.action_mailer.default_url_options = { host: "http:///adventure-asia.herokuapp.com" }
 
   #mailer with postmark follow lewagon
 

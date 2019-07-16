@@ -10,7 +10,7 @@ class BookingMailer < ApplicationMailer
 
     mail(
       to:       @booking.email,
-      subject:  "Adventure Asia, request on #{@booking.tour.name} created!"
+      subject:  "Adventure Asia, tour request!"
     )
   end
 end
