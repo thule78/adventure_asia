@@ -47,17 +47,7 @@
           </h3>
         <% end %>
           <div>
-             <strong>Date: </strong><%= booking.nice_date %> | <strong>People:</strong> <%= booking.headcount %> | <strong>Price: ￥</strong> <%= booking.tour.cost %> | <strong>Total: ￥</strong> <%= booking.tour.cost * booking.headcount %>&nbsp;&nbsp;&nbsp;<%= link_to raw('<i class="fas fa-trash-alt"></i>'),  booking_path(booking), method: "delete", class: "text-dark", data: { confirm: "Are you sure you want to cancel your request for '#{booking.tour.name}'?" }%> <br>
-          </div>
-          <div class="content_confirmed d-flex mt-3">
-            <%= cl_image_tag booking.tour.photo%>
-            <div class="tour-content-provider">
-              <p class='ml-3'><%= booking.tour.details%></p>
-              <div class="provider-name ml-3">
-                <h6>tour provider:</h6>
-                <p><%= cl_image_tag '237-Alvin-avatar-01' %> <%= booking.tour.provider.name %></p>
-              </div>
-            </div>
+             <strong>Date: </strong><%= booking.nice_date %> | <strong>People:</strong> <%= booking.head_count %> | <strong>Price: $US</strong> <%= booking.tour.price %> | <strong>Total: $US</strong> <%= booking.tour.price * booking.head_count %>&nbsp;&nbsp;&nbsp;<%= link_to raw('<i class="fas fa-trash-alt"></i>'),  booking_path(booking), method: "delete", class: "text-dark", data: { confirm: "Are you sure you want to cancel your request for '#{booking.tour.name}'?" }%> <br>
           </div>
         </li>
         <% end %>
