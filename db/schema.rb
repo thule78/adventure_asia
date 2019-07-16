@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_07_10_052925) do
-=======
-ActiveRecord::Schema.define(version: 2019_07_13_053943) do
->>>>>>> cab5914bad85840f6a60df39f140b9727050d7e2
+
+ActiveRecord::Schema.define do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,9 +55,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_053943) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.string "icon"
-<<<<<<< HEAD
-=======
-  end
+
 
   create_table "likes", force: :cascade do |t|
     t.string "liker_type"
@@ -69,8 +65,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_053943) do
     t.datetime "created_at"
     t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
     t.index ["liker_id", "liker_type"], name: "fk_likes"
->>>>>>> cab5914bad85840f6a60df39f140b9727050d7e2
-  end
+
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
