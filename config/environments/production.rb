@@ -91,14 +91,14 @@ Rails.application.configure do
   end
 
   #sendgrid follow https://medium.com/le-wagon/how-to-send-email-with-action-mailer-and-sendgrid-in-rails-5-32ed0c9167fd
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "http:///adventure-asia.herokuapp.com" }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: "http:///adventure-asia.herokuapp.com" }
 
   #mailer with postmark follow lewagon
 
-  # config.action_mailer.delivery_method     = :postmark
-  # config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
-  # config.action_mailer.default_url_options = { host: "https://adventure-asia.herokuapp.com/" }
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  config.action_mailer.default_url_options = { host: "https://adventure-asia.herokuapp.com/" }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
