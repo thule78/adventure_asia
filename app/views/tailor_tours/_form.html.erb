@@ -1,0 +1,62 @@
+<%= simple_form_for @tailortour do |f|%>
+
+<% if tailortour.errors.any? %>
+<div>
+  <ul>
+    <% tailortour.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="form-row">
+  <div class="form-group col-12 col-md-6">
+    <%= f.input :name, label: 'Your Name', class: 'form-control', placeholder: "Full name"%>
+  </div>
+  <div class="form-group col-12 col-md-6">
+    <%= f.input :email, label: 'Where should we send confirmation email to? (We will not spam you)', placeholder: "Email address", class: 'form-control'%>
+  </div>
+</div>
+
+  <div class="form-row">
+  <div class="form-group col-12 col-md-6">
+    <%= f.input :activity, label: 'Activity', class: 'form-control',as: :select, :collection => ["Biking","Hiking", "Rafting", "Unesco Other", "Other Water"],default: "Biking"%>
+  </div>
+  <div class="form-group col-12 col-md-6">
+    <%= f.input :destination, label: 'Where would you like to visit?', placeholder: "Bangkok, Luangphrabang", class: 'form-control'%>
+  </div>
+
+</div>
+<div class="form-row">
+  <div class="form-group col-12 col-md-4">
+    <%=f.label 'When would you like to go?'%>
+    <%= f.date_field :depature_date, class: 'form-control'%>
+  </div>
+  <div class="form-group col-12 col-md-4">
+    <%= f.input :days, label: 'How long would your trip be?', as: :select, :collection => ["5-7 days","8-10 days", "11-14 days", "14-20 days"],default: "5-7 days",  class: 'form-control'%>
+  </div>
+  <div class="form-group col-12 col-md-4">
+    <%= f.input :head_count, label: 'How many people in your group?', as: :select, collection: (2..10), default: 2, class: 'form-control'%>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-12 col-md-4">
+    <%= f.input :hotel, label: 'Style of accomodation would suite you', as: :select, :collection => ["Luxury","Resort", "Botique", "Authentic"],default: "Luxury", class: 'form-control'%>
+  </div>
+  <div class="form-group col-12 col-md-4">
+    <%= f.input :comfort, label: 'How challenging would you like the tour?', as: :select, :collection => ["Easy","Leisure", "Moderate", "Active", "Hard", "Extreme"],default: "Easy", class: 'form-control'%>
+  </div>
+  <div class="form-group col-12 col-md-4">
+    <%= f.input :theme, label: 'What sort of adventure would suite you?', as: :select, :collection => ["Touring","Road", "Day Tours", "Family", "Multi-Activity"],default: "Touring", class: 'form-control'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.input :text, label: 'Is there anything alse we need to know about before we help create your adventure?', :input_html => {:rows => 5}, class: "form-control" %>
+</div>
+
+<%= f.submit class: 'btn btn-info' %>
+<%= f.button :button, 'Reset', type: :reset, class: 'btn btn-outline-info' %>
+<% end %>
+
+

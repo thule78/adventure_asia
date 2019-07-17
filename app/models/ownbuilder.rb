@@ -1,0 +1,2 @@
+class Ownbuilder < ApplicationRecord
+end

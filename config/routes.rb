@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show]
   resources :countries, only: [:index, :show, :new, :create, :update, :destroy, :edit]
+  resources :tailor_tours, only: [:index, :show, :new, :create, :update, :destroy, :edit]
 
   resources :activities, only: [:index, :show, :new, :create, :update, :destroy, :edit]
   resources :locations, only: [:index, :show, :new, :create, :update, :destroy, :edit]

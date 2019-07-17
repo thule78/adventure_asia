@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define do
-
+ActiveRecord::Schema.define(version: 2019_07_17_025756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +53,7 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.string "icon"
-
+  end
 
   create_table "likes", force: :cascade do |t|
     t.string "liker_type"
@@ -65,7 +63,7 @@ ActiveRecord::Schema.define do
     t.datetime "created_at"
     t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
     t.index ["liker_id", "liker_type"], name: "fk_likes"
-
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -101,6 +99,22 @@ ActiveRecord::Schema.define do
     t.string "name"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "tailor_tours", force: :cascade do |t|
+    t.string "activity"
+    t.string "comfort"
+    t.string "theme"
+    t.date "depature_date"
+    t.integer "days"
+    t.integer "head_count"
+    t.string "hotel"
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "text"
+    t.string "destination"
   end
 
   create_table "tours", force: :cascade do |t|
