@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_025756) do
+ActiveRecord::Schema.define(version: 2019_07_17_041931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_025756) do
     t.string "comfort"
     t.string "theme"
     t.date "depature_date"
-    t.integer "days"
+    t.string "days"
     t.integer "head_count"
     t.string "hotel"
     t.string "name"

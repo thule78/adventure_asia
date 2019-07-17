@@ -27,8 +27,8 @@ class TailorToursController < ApplicationController
 
     if @tailortour.save
       flash[:success] = "Your booking was created successfully"
-      # mail = BookingMailer.with(booking: @booking).request
-      # mail.deliver_now
+      mail = TailortourMailer.with(tailor_tour: @tailortour).thankyou
+      mail.deliver_now
       redirect_to tailor_tour_path
     else
       render :new
@@ -43,14 +43,14 @@ class TailorToursController < ApplicationController
   end
 
   def set_tailor
-    @tailortours = TailorTour.find(params[:id])
+    @tailortour = TailorTour.find(params[:id])
     authorize @tailortour
   end
 
   private
 
   def tailortour_params
-    params.require(:tailortour).permit(:head_count, :depature_date,
+    params.require(:tailor_tour).permit(:head_count, :depature_date,
                   :text, :name, :email, :hotel, :activity,
                   :comfort, :theme, :days, :destination )
   end
