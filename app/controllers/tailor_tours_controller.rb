@@ -29,7 +29,7 @@ class TailorToursController < ApplicationController
       flash[:success] = "Your booking was created successfully"
       mail = TailortourMailer.with(tailor_tour: @tailortour).thankyou
       mail.deliver_now
-      redirect_to tailor_tour_path
+      redirect_to tours_path
     else
       render :new
     end
