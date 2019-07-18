@@ -6,7 +6,7 @@ class TailortourMailer < ApplicationMailer
   #   en.tailortour_mailer.thankyou.subject
   #
   def thankyou
-    @tailortour = params[:tailor_tour] # Instance variable => available in view
+    @tailortour = params[:tailortour] # Instance variable => available in view
     mail(to: @tailortour.email, subject: 'Adventure Asia, Tailor Adventure')
   end
 end

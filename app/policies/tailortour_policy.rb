@@ -1,4 +1,4 @@
-class TailorTourPolicy < ApplicationPolicy
+class TailortourPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all

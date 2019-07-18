@@ -64,7 +64,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUILD ITINERARY<span class="caret"></span></a>
 
         <ul  class="dropdown-menu about">
-          <li><%= link_to "Build your own itinerary", new_tailor_tour_path,  class: "nav-link" %></li>
+          <li><%= link_to "Build your own itinerary", new_tailortour_path,  class: "nav-link" %></li>
           <li><%= link_to "Contact Us",class: "nav-link" %></li>
         </ul>
 
@@ -120,6 +120,7 @@
             <%= link_to raw("Booking requests <span id='num-requests'>#{total_requests}</span>"), providers_bookings_path, class: "dropdown-item" %>
             <% else %>
             <%= link_to raw("Booking requests"), providers_bookings_path, class: "dropdown-item" %>
+            <%= link_to "Tailor Inquiry", tailortours_path, class: "dropdown-item" %>
             <% end %>
             <% end %>
             <%= link_to "New Country", new_country_path, class: "dropdown-item" %>

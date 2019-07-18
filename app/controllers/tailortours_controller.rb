@@ -1,8 +1,8 @@
-class TailorToursController < ApplicationController
+class TailortoursController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @tailortours = policy_scope(TailorTour).order(created_at: :desc)
+    @tailortours = policy_scope(Tailortour).order(created_at: :desc)
   end
 
   def show
@@ -10,7 +10,7 @@ class TailorToursController < ApplicationController
   end
 
   def new
-    @tailortour = TailorTour.new
+    @tailortour = Tailortour.new
     authorize @tailortour
   end
 
@@ -18,16 +18,16 @@ class TailorToursController < ApplicationController
     set_tailor
     @tailortour.update(tailortour_params)
 
-    redirect_to tailor_path(@tailortour)
+    redirect_to tailortour_path(@tailortour)
   end
 
   def create
-    @tailortour = TailorTour.new(tailortour_params)
+    @tailortour = Tailortour.new(tailortour_params)
     authorize @tailortour
 
     if @tailortour.save
       flash[:success] = "Your booking was created successfully"
-      mail = TailortourMailer.with(tailor_tour: @tailortour).thankyou
+      mail = TailortourMailer.with(tailortour: @tailortour).thankyou
       mail.deliver_now
       redirect_to tours_path
     else
@@ -43,14 +43,14 @@ class TailorToursController < ApplicationController
   end
 
   def set_tailor
-    @tailortour = TailorTour.find(params[:id])
+    @tailortour = Tailortour.find(params[:id])
     authorize @tailortour
   end
 
   private
 
   def tailortour_params
-    params.require(:tailor_tour).permit(:head_count, :depature_date,
+    params.require(:tailortour).permit(:head_count, :depature_date,
                   :text, :name, :email, :hotel, :activity,
                   :comfort, :theme, :days, :destination )
   end

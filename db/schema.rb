@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_041931) do
+ActiveRecord::Schema.define(version: 2019_07_18_044356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_041931) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "tailor_tours", force: :cascade do |t|
+  create_table "tailortours", force: :cascade do |t|
     t.string "activity"
     t.string "comfort"
     t.string "theme"

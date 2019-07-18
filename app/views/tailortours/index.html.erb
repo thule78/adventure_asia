@@ -1,0 +1,23 @@
+<div class="tailortour-container">
+   <h2>Tailor Inquiries</h2>
+  <% @tailortours.each do |t|%>
+
+  <div class="tailor_tour">
+
+    <h4><%= t.name %></h4>
+    Email: <strong><%= t.email %></strong>
+    <p>Sent on: <%= t.created_date %></p>
+
+    <div>
+      <strong>Departure Date: </strong><%= t.start_date %> |
+      <strong>How Many Days:</strong><%= t.days%> |
+      <strong>People:</strong> <%= t.head_count %> |
+      <strong>Destination: </strong> <%= t.destination %> |
+      <strong>Theme:</strong> <%= t.theme%> |
+      <strong>Comfort:</strong> <%= t.comfort%> |
+      <strong>Accomodation:</strong> <%= t.hotel%>
+    </div>
+    <div><strong>Message:</strong> <%= t.text%></div>
+  </div>
+  <% end %>
+</div>
