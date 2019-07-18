@@ -42,8 +42,9 @@
               <div class="notification-content">
                 <h3><%= booking.name %></h3>
                 <h5><%= booking.email %></h5>
+                <p>Sent on:  <%= booking.created_at %></p>
                 <p><strong>Booking-id:</strong> <%= booking.id %></p>
-                <p><strong>Date:</strong> <%= booking.nice_date %> - <strong>People:</strong> <%= booking.head_count %> - <strong>Total: US$</strong> <%= booking.tour.price * booking.head_count %></p>
+                <p><strong>Departure Date:</strong> <%= booking.nice_date %> - <strong>People:</strong> <%= booking.head_count %> - <strong>Total: US$</strong> <%= booking.tour.price * booking.head_count %></p>
                 <p><%= booking.note %></p>
               </div>
               <% if booking.confirmed == true %>
