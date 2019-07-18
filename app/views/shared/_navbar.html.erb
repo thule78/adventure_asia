@@ -98,7 +98,7 @@
           <%= link_to "Tour I Liked", "#", class: "dropdown-item login-menu" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
 
-          <hr />
+
           <div>
             <% if current_user.admin? %>
             <% var = current_user %>
@@ -120,9 +120,10 @@
             <%= link_to raw("Booking requests <span id='num-requests'>#{total_requests}</span>"), providers_bookings_path, class: "dropdown-item" %>
             <% else %>
             <%= link_to raw("Booking requests"), providers_bookings_path, class: "dropdown-item" %>
+            <% end %>
+            <% end %>
             <%= link_to "Tailor Inquiry", tailortours_path, class: "dropdown-item" %>
-            <% end %>
-            <% end %>
+             <hr />
             <%= link_to "New Country", new_country_path, class: "dropdown-item" %>
             <%= link_to "New Location", new_location_path, class: "dropdown-item" %>
             <%= link_to "New Activity", new_activity_path, class: "dropdown-item" %>
