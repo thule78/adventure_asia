@@ -51,14 +51,14 @@ class ToursController < ApplicationController
   end
 
   def likes
-    @user = current_user # before_action :authenticate_user, only: [:likes]
+    @user = ccurrent_or_guest_user # before_action :authenticate_user, only: [:likes]
     set_tour
     @user.like!(@tour)
     redirect_to tour_path, alert: "Unsaved"
   end
 
   def unlikes
-    @user = current_user
+    @user = current_or_guest_user
     set_tour
     @user.unlike!(@tour)
     redirect_to tour_path, alert: "Save for later"

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @tour = Tour.find(params[:tour_id])
     @booking.tour = @tour
-    @booking.customer = current_user
+    @booking.customer = current_or_guest_user
 
     if @booking.save
       # mail = BookingMailer.with(booking: @booking).request
