@@ -25,8 +25,7 @@ class ToursController < ApplicationController
     authorize @tour
     @tour.provider = current_user
     if @tour.save
-      flash[:success] = "Tour was created successfully"
-      redirect_to tours_path
+      redirect_to tours_path, notice: "Tour was created successfully"
     else
       render :new
     end
@@ -55,7 +54,14 @@ class ToursController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     set_tour
     @user.like!(@tour)
-    redirect_to tour_path, notice: "Liked this tour successfully!"
+    redirect_to tour_path, alert: "UnLiked this tour"
+  end
+
+  def unlikes
+    @user = current_user
+    set_tour
+    @user.unlike!(@tour)
+    redirect_to tour_path, alert: "Liked this tour"
   end
 
   def set_tour

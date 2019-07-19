@@ -30,10 +30,9 @@ class BookingsController < ApplicationController
     @booking.customer = current_user
 
     if @booking.save
-      flash.now[:notice] = "Thank you for your booking"
       # mail = BookingMailer.with(booking: @booking).request
       # mail.deliver_now
-      redirect_to tours_path
+      redirect_to tours_path, notice: "Your booking was created successfully"
     else
       render :new
     end

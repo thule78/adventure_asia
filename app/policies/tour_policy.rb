@@ -29,4 +29,8 @@ class TourPolicy < ApplicationPolicy
     true
   end
 
+  def unlikes?
+    true
+  end
+
 end

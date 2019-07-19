@@ -26,10 +26,9 @@ class TailortoursController < ApplicationController
     authorize @tailortour
 
     if @tailortour.save
-      flash[:success] = "Your booking was created successfully"
       mail = TailortourMailer.with(tailortour: @tailortour).thankyou
       mail.deliver_now
-      redirect_to tours_path
+      redirect_to tours_path, notice: "Your inquire was created successfully"
     else
       render :new
     end
