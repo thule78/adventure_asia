@@ -95,12 +95,12 @@
       top: -30px;
       left: -70px;
     }
-    a {
+    a, .unlike {
       position: absolute;
       left: 8px;
       color: #727272;
     }
-    a:hover {
+    a:hover, .like {
       color: red;
     }
   }

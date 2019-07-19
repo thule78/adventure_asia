@@ -44,7 +44,13 @@
           <div class="tour-card-body">
             <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
             <span class="tour-card-like">
-              <object><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(tour), class: "like" %></object><span class="tooltiptext">Save for later</span></span>
+              <% if current_user.likes?(tour)%>
+              <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "unlike" %></object><span class="tooltiptext">Save for later</span>
+              <%else%>
+              <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "like" %></object><span class="tooltiptext">Unsaved</span>
+              <%end%>
+            </span>
+
           </div>
 
           <ul class="tour-card-list">
