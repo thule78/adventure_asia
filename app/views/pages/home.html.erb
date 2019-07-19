@@ -52,7 +52,7 @@
           <%= cl_image_tag tour.photo %>
           <div class="tour-card-body">
             <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
-            <span class="tour-card-like"><i class="far fa-heart"></i><span class="tooltiptext">Save for later</span></span>
+            <span class="tour-card-like"><object ><a href="#" class="unlike"><i class="far fa-heart"></i></a></object><span class="tooltiptext">Save for later</span></span>
           </div>
           <ul class="tour-card-list">
             <li>

@@ -4,13 +4,13 @@
       <a class="nav-item nav-link-tour-show active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">OVERVIEW</a>
       <a class="nav-item nav-link-tour-show" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="false">FULL ITINERARY</a>
       <a class="nav-item nav-link-tour-show" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">TOUR DETAILS</a>
-      <div class="buttons">
+      <div class="links">
         <span><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
-        <span>
+        <span class="btn-like">
           <% if current_user.likes?(@tour)%>
-          <%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(@tour), class: "btn-unlike" %><span class="btn-like-text">Like this tour</span>
+          <%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(@tour), class: "unlike" %><span class="like-text">Save for later</span>
           <%else%>
-          <%= link_to raw('<i class="far fa-heart"></i>'), likes_path(@tour), class: "btn-like" %><span class="btn-unlike-text">Unlike this tour</span>
+          <%= link_to raw('<i class="far fa-heart"></i>'), likes_path(@tour), class: "like" %><span class="like-text">Unsaved</span>
           <%end%>
         </span>
       </div>

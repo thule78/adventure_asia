@@ -58,45 +58,56 @@
 }
 
 
-.tour-card .tour-card-body {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-.tour-card-body .tour-card-like {
-
-  position: absolute;
-  right: 16px;
-  top: -26px;
-  width: 35px;
-  background-color: white;
-  font-size: 20px;
-  text-align: center;
-  border-radius: 50%;
-  color: #727272;
-
-  .tooltiptext{
-    visibility: hidden;
-    width: 120px;
-    background-color: #FF665E;
-    color: #fff;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 6px;
-    padding: 4px;
-    position: absolute;
-    z-index: 1;
-    top: -30px;
-    left: -70px;
+.tour-card  {
+  .tour-card-body{
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
   }
 }
 
-.tour-card-body .tour-card-like:hover{
-  color: red;
-  .tooltiptext {
+.tour-card-body {
+  .tour-card-like {
+    position: absolute;
+    right: 16px;
+    top: -26px;
+    width: 36px;
+    background-color: white;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color: #727272;
+    height: 36px;
+
+    .tooltiptext{
+      visibility: hidden;
+      width: 120px;
+      background-color: #FF665E;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      border-radius: 6px;
+      padding: 4px;
+      position: absolute;
+      z-index: 1;
+      top: -30px;
+      left: -70px;
+    }
+    a {
+      position: absolute;
+      left: 8px;
+      color: #727272;
+    }
+    a:hover {
+      color: red;
+    }
+  }
+
+  .tour-card-like:hover {
+    .tooltiptext {
       visibility: visible;
     }
+  }
 }
