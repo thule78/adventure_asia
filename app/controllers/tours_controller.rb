@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :likes, :unlikes]
 
   def index
     if params[:query].present?
@@ -51,7 +51,7 @@ class ToursController < ApplicationController
   end
 
   def likes
-    @user = ccurrent_or_guest_user # before_action :authenticate_user, only: [:likes]
+    @user = current_or_guest_user # before_action :authenticate_user, only: [:likes]
     set_tour
     @user.like!(@tour)
     redirect_to tour_path, alert: "Unsaved"
