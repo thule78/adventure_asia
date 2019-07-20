@@ -55,22 +55,22 @@ class ToursController < ApplicationController
     @user = current_or_guest_user # before_action :authenticate_user, only: [:likes]
     set_tour
     @user.like!(@tour)
-      respond_to do |format|
-      format.html { redirect_to :back, alert: "Unsaved" }
-      format.js { render layout: false }
-      end
     #redirect_to tour_path, alert: "Unsaved"
+    respond_to do |format|
+    format.html { redirect_to tour_path, alert: "Save for later" }
+    format.js
+    end
   end
 
   def unlikes
     @user = current_or_guest_user
     set_tour
     @user.unlike!(@tour)
-    respond_to do |format|
-      format.html { redirect_to :back, alert: "Unsaved" }
-      format.js { render layout: false }
-      end
     #redirect_to tour_path, alert: "Save for later"
+    respond_to do |format|
+    format.html { redirect_to tour_path, alert: "Save for later" }
+    format.js
+    end
   end
 
   private
