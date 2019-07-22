@@ -2,10 +2,11 @@ class ToursController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :likes, :unlikes]
 
   def index
-    if params[:query].present? || params["search"]
+    if params["search"] #params[:query].present? ||
       tours = policy_scope(Tour).order(created_at: :desc)
       @filter = params[:query].present? || params["search"]["activity"].concat(params["search"]["location"]).flatten.reject(&:blank?)
-      @tours = tours.search_for_tour(params[:query]) || @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
+      @tours = @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
+      #@tours = tours.search_for_tour(params[:query]) #|| @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
     else
       @tours = policy_scope(Tour).order(created_at: :desc)
     end
@@ -24,7 +25,7 @@ class ToursController < ApplicationController
   def create
     @tour = Tour.new(tour_params)
     authorize @tour
-    @tour.provider = current_user
+    @tour.providers = current_user
     if @tour.save
       redirect_to tours_path, notice: "Tour was created successfully"
     else
@@ -52,18 +53,18 @@ class ToursController < ApplicationController
   end
 
   def likes
-    @user = current_or_guest_user # before_action :authenticate_user, only: [:likes]
+    @user = guest_user # before_action :authenticate_user, only: [:likes]
     set_tour
     @user.like!(@tour)
     #redirect_to tour_path, alert: "Unsaved"
     respond_to do |format|
-    format.html { redirect_to tour_path, alert: "Save for later" }
+    format.html { redirect_to tour_path, alert: "Unsaved" }
     format.js
     end
   end
 
   def unlikes
-    @user = current_or_guest_user
+    @user = guest_user
     set_tour
     @user.unlike!(@tour)
     #redirect_to tour_path, alert: "Save for later"
