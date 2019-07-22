@@ -12,11 +12,11 @@
         <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
           <li >
             <%= simple_form_for(:search, url: tours_path, method: "GET", remote: true) do |f| %>
-  <%= f.input :activity, label: "Activities", collection: Activity.all,  as: :check_boxes, class: "dropdown-menu" %>
-  <%= f.input :location, label: "Locations", collection: Country.all, as: :check_boxes, group_method: :locations, prompt: "Select Location" %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-  <%= link_to "Reset", tours_path  %>
-<% end %>
+            <%= f.input :activity, label: "Activities", collection: Activity.all,  as: :check_boxes, class: "dropdown-menu" %>
+            <%= f.input :location, label: "Locations", collection: Country.all, as: :check_boxes, group_method: :locations, prompt: "Select Location" %>
+            <%= f.submit "Search", class: "btn btn-primary" %>
+            <%= link_to "Reset", tours_path  %>
+            <% end %>
           </li>
 
         </ul>
@@ -41,9 +41,9 @@
             <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
             <span class="tour-card-like">
               <% if current_or_guest_user.likes?(tour)%>
-              <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "unlike",  remote: true, id: "like_#{tour.id}" %></object><span class="tooltiptext">Save for later</span>
+              <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "unlike",  remote: true, id: "unlike_#{tour.id}", method: "GET" %></object><span class="tooltiptext">Save for later</span>
               <%else%>
-              <object><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(tour), class: "like",  remote: true, id: "like_#{tour.id}" %></object><span class="tooltiptext">Unsaved</span>
+              <object><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(tour), class: "like",  remote: true, id: "like_#{tour.id}", method: "GET" %></object><span class="tooltiptext">Unsaved</span>
               <%end%>
             </span>
 
