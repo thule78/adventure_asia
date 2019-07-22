@@ -1,8 +1,8 @@
 
 var like = document.getElementById("unlike_<%= @tour.id%>")
 
-like.attr("href", '/tours/<%= @tour.id%>/likes');
-like.removeClass('like').addClass('unlike');
+like.attr("href", '/tours/<%= @tour.id%>/unlikes');
+like.removeClass('unlike').addClass('like');
 
 
 
