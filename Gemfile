@@ -23,7 +23,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'pg_search'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem "socialization"
-gem 'devise-guests', '~> 0.7.0'
+gem 'devise-guests'
 gem 'postmark-rails'
 
 
