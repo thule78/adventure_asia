@@ -2,10 +2,11 @@ class ToursController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :likes, :unlikes]
 
   def index
-    if params[:query].present? || params["search"]
+    if params["search"] #params[:query].present? ||
       tours = policy_scope(Tour).order(created_at: :desc)
       @filter = params[:query].present? || params["search"]["activity"].concat(params["search"]["location"]).flatten.reject(&:blank?)
-      @tours = tours.search_for_tour(params[:query]) || @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
+      @tours = @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
+      #@tours = tours.search_for_tour(params[:query]) #|| @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
     else
       @tours = policy_scope(Tour).order(created_at: :desc)
     end
