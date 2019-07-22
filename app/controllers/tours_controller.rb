@@ -24,7 +24,7 @@ class ToursController < ApplicationController
   def create
     @tour = Tour.new(tour_params)
     authorize @tour
-    @tour.provider = current_user
+    @tour.providers = current_user
     if @tour.save
       redirect_to tours_path, notice: "Tour was created successfully"
     else
