@@ -2,11 +2,7 @@
   <div class="tour-wrapper">
     <div class="tour-search col-md-3">
       <div class="search-menu">
-        <div id="tag_cloud">
-          <% tag_cloud Tour.tag_counts, %w[s m l] do |tag, css_class| %>
-          <%= link_to tag.name, tagged_path(tag.name), class: css_class %>
-          <% end %>
-        </div>
+
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button"
           id="dropdownMenu1" data-toggle="dropdown"
@@ -15,25 +11,20 @@
             <span class="caret">Activities</span>
           </button>
         <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
-<<<<<<< HEAD
-           <li >
+          <li>
             <%= simple_form_for(:search, url: tours_path, method: "GET") do |f| %>
             <div id="tag_cloud">
-              <% tag_cloud Tour.tag_counts, %w[s m l] do |tag, css_class| %>
-              <%= f.input :tags , collection: tag.name, as: :check_boxes, class: "css_class" %>
-              <% end %>
-            </div>
-=======
-          <li >
-            <%= simple_form_for(:search, url: tours_path, method: "GET") do |f| %>
-            <%= f.input :tags, label: "Tags", collection: $tag_list,  as: :check_boxes, class: "dropdown-menu" %>
->>>>>>> c060cb8c205a965f8b814fb25430cbf69e082e10
-            <%= f.input :activity, label: "Activities", collection: Activity.all,  as: :check_boxes, class: "dropdown-menu" %>
-            <%= f.input :location, label: "Locations", collection: Country.all, as: :check_boxes, group_method: :locations, prompt: "Select Location" %>
+            <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
+              <%= check_box_tag 'tags[]', (tag.name), false, class: css_class %>
+              <span class="tag-name"><%= tag.name %></span>
+
+            <%end%>
+          </div>
             <%= f.submit "Search", class: "btn btn-primary" %>
             <%= link_to "Reset", tours_path  %>
-            <% end %>
+            <%end%>
           </li>
+
 
         </ul>
       </div>

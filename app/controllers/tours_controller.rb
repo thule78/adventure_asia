@@ -1,12 +1,13 @@
 class ToursController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :likes, :unlikes]
 
+
   def index
-    if params["search"] #params[:query].present? ||
+    if params[:tags].present?
+      #@filter = params["search"]["tag"].flatten.reject(&:blank?)
+      @tours = Tour.all.tagged_with(params[:tags])
       tours = policy_scope(Tour).order(created_at: :desc)
-      @filter = params[:query].present? || params["search"]["activity"].concat(params["search"]["location"]).flatten.reject(&:blank?)
-      @tours = @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
-      #@tours = tours.search_for_tour(params[:query]) #|| @filter.empty? ? Tour.all : Tour.all.tagged_with(@filter, any: true)
+
     else
       @tours = policy_scope(Tour).order(created_at: :desc)
     end
@@ -84,6 +85,7 @@ class ToursController < ApplicationController
   def tour_params
     params.require(:tour).permit(:name, :content, :itinerary, :price, :code,
                     :duration, :style, :theme, :comfort, :start_end_des,
-                    :photo, :photo_1, :photo_2, :photo_3, :location_id, :activity_id, :tag_list)
+                    :photo, :photo_1, :photo_2, :photo_3, :location_id,
+                    :activity_id, :tag_list)
   end
 end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
    devise_for :users
 
   root to: 'pages#home'
-  get '/tagged', to: "tours#index", as: :tagged
+  get 'tags/:tag', to: 'tours#index', as: :tag
   get 'tours/:id/likes', to: 'tours#likes', as: :likes
   get 'tours/:id/unlikes', to: 'tours#unlikes', as: :unlikes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

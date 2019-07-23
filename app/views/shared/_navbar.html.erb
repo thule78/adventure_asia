@@ -9,10 +9,13 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FIND MY TRIP<span class="caret"></span></a>
 
         <ul  class="dropdown-menu search-menu">
-          <li><%= link_to "Countries", countries_path, class: "nav-link" %></li>
-          <li><%= link_to "Locations", locations_path, class: "nav-link" %></li>
-          <li><%= link_to "Activities", activities_path, class: "nav-link" %></li>
-          <li><%= link_to "Tours", tours_path, class: "nav-link" %></li>
+          <li>
+            <div id="tag_cloud">
+              <% tag_cloud Tour.tag_counts, %w[s m l] do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+              <% end %>
+            </div>
+          </li>
         </ul>
 
       </li>
