@@ -12,7 +12,7 @@
           </button>
         <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
           <li>
-            <%= simple_form_for(:search, url: tours_path, method: "GET") do |f| %>
+            <%= simple_form_for(:search, url: tours_path, method: "GET", id: "search", remote: true) do |f| %>
             <div id="tag_cloud">
             <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
               <%= check_box_tag 'tags[]', (tag.name), false, class: css_class %>
