@@ -1,4 +1,2 @@
-var like = document.getElementById("like_<%= @tour.id%>")
-
-like.attr("href", '/tours/<%= @tour.id%>/likes');
-like.removeClass('like').addClass('unlike');
+$("#like_<%= @tour.id %>").removeClass('unlike').addClass('like');
+$("#like_<%= @tour.id %>").attr("href", '/tours/<%= @tour.id %>/unlikes');
