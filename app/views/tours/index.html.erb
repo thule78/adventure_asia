@@ -1,6 +1,7 @@
 
   <div class="tour-wrapper">
-    <div class="tour-search col-md-3">
+    <div class="tour-search" id="mySidebar">
+      <a href="javascript:void(0)" class="closebtn" id="close">Close <i class="fas fa-times-circle"></i></a>
       <div class="search_form">
         <h5 class="title">Select your interesting</h5>
         <%= simple_form_for(:index, url: tours_path, method: "GET", id: "search_form") do |f| %>
@@ -153,8 +154,9 @@
         </div>
         <!-- end modal -->
       </div>
-     </div>
-    <div class="tour-result col-md-9">
+    </div>
+    <div class="tour-result col-md-12" id="main">
+      <button class="openbtn" id="open">Open More <i class="fas fa-align-left"></i></button>
       <div class="top">
         <div class="tour-count"></div>
         <div class="search-key"></div>
