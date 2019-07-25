@@ -4,6 +4,7 @@ class Tour < ApplicationRecord
   belongs_to :activity
   has_many :users, through: :bookings
   has_many :bookings, dependent: :delete_all
+  has_many :pdfs, dependent: :delete_all
 
   validates :name, presence: true
   validates :content, presence: true
