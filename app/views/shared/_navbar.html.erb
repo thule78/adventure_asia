@@ -16,8 +16,8 @@
               <span><%= tag.name %></span></label>
               <%end%>
             </div>
-            <%= f.submit "Search", class: "btn btn-warning" %>
-            <%= link_to "Reset", root_path  %>
+            <%= f.submit "Search", class: "btn btn-info" %>
+            <%= link_to "Reset", root_path, class: "btn btn-outline-info"  %>
             <%end%>
           </ul>
       </li>
@@ -65,19 +65,13 @@
       <% end %>
     </ul>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUILD ITINERARY<span class="caret"></span></a>
-
-        <ul  class="dropdown-menu about">
-          <li><%= link_to "Build your own itinerary", new_tailortour_path,  class: "nav-link" %></li>
-          <li><%= link_to "Contact Us",class: "nav-link" %></li>
-        </ul>
-
+      <li>
+        <%= link_to "TAILOR TOUR", new_tailortour_path, class: "dropdown-item" %>
       </li>
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LOVE TOURS <i class="far fa-heart"></i><span class="caret"></span></a>
         <ul  class="dropdown-menu search-bar">
           <!--  <div class="mr-4">
             <%= form_for Tour.new, url: tours_path(anchor: 'tours'), method: :get do %>
