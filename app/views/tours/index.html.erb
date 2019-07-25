@@ -1,18 +1,159 @@
-<div class="container">
-  <div class="tour-wrapper">
-    <div class="tour-search col-md-4">
-      <%= simple_form_for(:index, url: tours_path, method: "GET", id: "search_form", remote: true) do |f| %>
-      <div id="tag_cloud">
-        <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
-        <%= check_box_tag 'tags[]', (tag.name), false, class: "css_class", id: "search"  %>
-        <span class="tag-name"><%= tag.name %></span>
-        <%end%>
 
+  <div class="tour-wrapper">
+    <div class="tour-search col-md-3">
+      <div class="search_form">
+        <h5 class="title">Select your interesting</h5>
+        <%= simple_form_for(:index, url: tours_path, method: "GET", id: "search_form") do |f| %>
+        <div id="tag_cloud" class="custom-control custom-checkbox">
+          <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
+          <label class="btn btn-outline-warning"><%= check_box_tag 'tags[]', (tag.name), false, class: "badgebox", id: "search"  %>
+            <span><%= tag.name %></span></label>
+            <%end%>
+          </div>
+          <%= f.submit "Search", class: "btn-arrow" %>
+          <!--<%= link_to "Reset", tours_path  %>-->
+          <%end%>
       </div>
-      <%= f.submit "Search", class: "btn btn-primary" %>
-        <%= link_to "Reset", root_path  %>
-      <%end%>
-    </div>
+      <div class="infos">
+        <h5 class="title">General Informations</h5>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-arrow" data-toggle="modal" data-target="#essential
+        ">
+        Esstial Info <i class="fas fa-long-arrow-alt-right"></i>
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="essential" tabindex="-1" role="dialog" aria-labelledby="essentialTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="essentialTitle">Esstial Info:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <% Country.all.each do |country|%>
+                <h3>Essential Informations of <%=country.name%></h3>
+                <%= country.essential_info.html_safe %>
+                <%end%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end modal -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-arrow" data-toggle="modal" data-target="#visa">
+        Visa Permit <i class="fas fa-long-arrow-alt-right"></i>
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="visa" tabindex="-1" role="dialog" aria-labelledby="visaTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="visaTitle">Visa Permit:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <% Country.all.each do |country|%>
+                <h3>Visa to <%=country.name%></h3>
+                <%= country.visa_permit.html_safe %>
+                <%end%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end modal -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-arrow" data-toggle="modal" data-target="#weather">
+        Weather & Climate <i class="fas fa-long-arrow-alt-right"></i>
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="weather" tabindex="-1" role="dialog" aria-labelledby="weatherTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="weatherTitle">Weather & Climate</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <% Country.all.each do |country|%>
+                <h3>Weather of <%=country.name%></h3>
+                <%= country.weather_climate.html_safe %>
+                <%end%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end modal -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-arrow" data-toggle="modal" data-target="#festival">
+        Festival & Events <i class="fas fa-long-arrow-alt-right"></i>
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="festival" tabindex="-1" role="dialog" aria-labelledby="festivalTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="festivalTitle">Festival & Events</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <% Country.all.each do |country|%>
+                <h3>Festival & Events of <%=country.name%></h3>
+                <%= country.festival_events.html_safe %>
+                <%end%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end modal -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-arrow" data-toggle="modal" data-target="#local">
+        Local Custom <i class="fas fa-long-arrow-alt-right"></i>
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="local" tabindex="-1" role="dialog" aria-labelledby="localTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="localTitle">Local Custom</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <% Country.all.each do |country|%>
+                <h3>Local Custom of <%=country.name%></h3>
+                <%= country.local_customs.html_safe %>
+                <%end%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end modal -->
+      </div>
+     </div>
     <div class="tour-result col-md-9">
       <div class="top">
         <div class="tour-count"></div>
@@ -70,5 +211,5 @@
       </div>
     </div>
   </div>
-</div>
+
 
