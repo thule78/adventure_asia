@@ -1,8 +1,6 @@
-var search = document.getElementById("search")
-
-search.submit(function(e) {
-  e.preventDefault(); // stops default behavior
-  var dataToSubmit = $(this).serialize();
-  $.post($(this).attr('action'), dataToSubmit);
+$("#search").onChange(function() {
+  $("#search_form").submit(e);
+  e.preventDefault();
+  select();
 });
 

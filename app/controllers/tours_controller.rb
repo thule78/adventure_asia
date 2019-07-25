@@ -6,10 +6,6 @@ class ToursController < ApplicationController
     if params[:tags].present?
       @tours = Tour.all.tagged_with(params[:tags])
       tours = policy_scope(Tour).order(created_at: :desc)
-      respond_to do |format|
-        format.html
-        format.js { render action: "submit"}
-      end
     else
       @tours = policy_scope(Tour).order(created_at: :desc)
     end

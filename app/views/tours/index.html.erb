@@ -1,35 +1,19 @@
 <div class="container">
   <div class="tour-wrapper">
-    <div class="tour-search col-md-3">
-      <div class="search-menu">
+    <div class="tour-search col-md-4">
+      <%= simple_form_for(:index, url: tours_path, method: "GET", id: "search_form") do |f| %>
+      <div id="tag_cloud">
+        <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
+        <%= check_box_tag 'tags[]', (tag.name), false, class: "css_class", id: "search"  %>
 
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button"
-          id="dropdownMenu1" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="true">
-            <i class="glyphicon glyphicon-cog"></i>
-            <span class="caret">Activities</span>
-          </button>
-        <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
-          <li>
-            <%= simple_form_for(:search, url: tours_path, method: "GET", id: "search", remote: true) do |f| %>
-            <div id="tag_cloud">
-            <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
-              <%= check_box_tag 'tags[]', (tag.name), false, class: css_class %>
-              <span class="tag-name"><%= tag.name %></span>
-
-            <%end%>
-          </div>
-            <%end%>
-          </li>
-
-
-        </ul>
-      </div>
-      </div>
-      <div class="info-menu">
+        <!-- onchange: "$(this.form).submit();" -->
+        <span class="tag-name"><%= tag.name %></span>
+        <%end%>
 
       </div>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+        <%= link_to "Reset", root_path  %>
+      <%end%>
     </div>
     <div class="tour-result col-md-9">
       <div class="top">
