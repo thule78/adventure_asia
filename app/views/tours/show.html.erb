@@ -70,7 +70,7 @@
       <div class="tour-photo">
 
         <div class="bd-example">
-          <div id="carouselExampleCaptions" class="carousel slide" data-ride="false">
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -110,8 +110,13 @@
         <div class="links col-md-4">
           <span><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
           <span class="btn-arrow">DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i></span>
-          <span class="btn-arrow">SAVE THIS TOUR <i class="fas fa-long-arrow-alt-right"></i></span>
-
+          <span class="btn-arrow">
+            <% if guest_user.likes?(@tour)%>
+            <%= link_to raw('SAVE THIS TOUR <i class="fas fa-long-arrow-alt-right"></i>'), unlikes_path(@tour) %>
+            <%else%>
+            <%= link_to raw('SAVE THIS TOUR <i class="fas fa-long-arrow-alt-right"></i>'), likes_path(@tour) %>
+            <%end%>
+          </span>
         </div>
 
       </div>

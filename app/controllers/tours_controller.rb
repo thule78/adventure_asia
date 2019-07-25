@@ -58,7 +58,7 @@ class ToursController < ApplicationController
     #redirect_to tour_path, alert: "Unsaved"
     respond_to do |format|
     format.html { redirect_to tour_path, alert: "Unsaved" }
-    format.js
+    format.js  { flash.now[:alert] = 'Unsaved' }
     end
   end
 
@@ -69,7 +69,7 @@ class ToursController < ApplicationController
     #redirect_to tour_path, alert: "Save for later"
     respond_to do |format|
     format.html { redirect_to tour_path, alert: "Save for later" }
-    format.js
+    format.js { flash.now[:alert] = 'Save for later' }
     end
   end
 
