@@ -43,13 +43,12 @@ class PdfsController < ApplicationController
 
     redirect_to pdfs_path
   end
+  private
 
   def set_pdf
     @pdf = Pdf.find(params[:id])
     authorize @pdf
   end
-
-  private
 
   def pdf_params
     params.require(:pdf).permit(:name, :email,
@@ -57,4 +56,3 @@ class PdfsController < ApplicationController
   end
 end
 
-end
