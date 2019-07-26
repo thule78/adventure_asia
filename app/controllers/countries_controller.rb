@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @countries = policy_scope(Country).order(name: :asc)
