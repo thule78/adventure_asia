@@ -49,7 +49,7 @@
           <li>
             <%= link_to activity_path(activity), class: "nav-link", :action => 'go' do %>
             <span class="icon"><%= cl_image_tag activity.photo%></span>
-            <span class="text"><%= link_to activity.name.upcase%></span>
+            <span class="text"><%= activity.name.upcase%></span>
             <%end%>
           </li>
           <%end%>
