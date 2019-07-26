@@ -137,8 +137,8 @@
 
   <div class="destinations ">
     <h2 class="home-title">browse by country</h2>
-    <span class="break"><%= image_tag "pinpoint.svg"%></span>
-    <div class="cards">
+    <span class="break-point"><%= image_tag "pinpoint.svg"%></span>
+    <div class="cards-locations">
       <% Country.all.each do |country| %>
       <div class="card">
         <%= link_to country_path(country),class:"country-card", :action => 'go' do %>

@@ -60,48 +60,6 @@
   text-align: center;
   width: 90vw;
   margin: auto;
-  .break img {
-    width: 30px;
-    height: 30px;
-    opacity: 0.5;
-    margin: 20px auto;
-  }
-  .cards {
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 70vw;
-    gap: 20px;
-    :nth-child(1), :nth-child(4), :nth-child(5), :nth-child(7){
-      .img-responsive {
-        width: 40vw;
-        height: 30vh;
-        max-height: 400px;
-        object-fit: cover;
-      }
-      :hover {
-        width: 40vw;
-        height: 30vh;
-        opacity: 0.3;
-        transition: .5s ease;
-      }
-    }
-    :nth-child(2), :nth-child(3), :nth-child(6){
-      .img-responsive {
-        width: 20vw;
-        height: 30vh;
-        max-height: 400px;
-        object-fit: cover;
-      }
-      :hover {
-        width: 20vw;
-        height: 30vh;
-        opacity: 0.3;
-        transition: .5s ease;
-      }
-    }
-  }
 }
 
 .promo-countdown {
