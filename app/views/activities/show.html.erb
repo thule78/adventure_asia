@@ -1,16 +1,161 @@
-<div class="container">
+<div class="panel-photo">
+    <%= cl_image_tag @activity.photo %>
+    <div class="activity-show-title">
+      <span class="icon"><%= cl_image_tag @activity.photo %></span>
+      <span class="name"><h1><%= @activity.name %></h1></span>
+    </div>
+</div>
+<div class="activity-wrapper">
+  <div class="activity-sidebar" id="mySidebar">
+    <a href="javascript:void(0)" class="closebtn" id="close">Close <i class="fas fa-times-circle"></i></a>
+    <div class="infos">
+      <h5 class="title">General Informations</h5>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn-arrow" data-toggle="modal" data-target="#summary">
+        Summary <i class="fas fa-long-arrow-alt-right"></i>
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="summary" tabindex="-1" role="dialog" aria-labelledby="summaryTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="summaryTitle">Summary</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= @activity.summary.html_safe%>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end modal -->
+      <!-- Button trigger modal -->
+      <button type="button" class="btn-arrow" data-toggle="modal" data-target="#sights">
+        Sights <i class="fas fa-long-arrow-alt-right"></i>
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="sights" tabindex="-1" role="dialog" aria-labelledby="sightsTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sightsTitle">Sights</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= @activity.summary.html_safe%>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end modal -->
+    </div>
+  </div>
+  <div class="activity-main col-12" id="main">
+    <button class="openbtn" id="open">Open More <i class="fas fa-align-left"></i></button>
+    <div class="summary">
+      <%= @activity.summary.first(250).html_safe%>
+    </div>
+  <div class="tours-list">
+    <h4 class="title">choose your <%= @activity.name%> adventures</h4>
+    <div class="all-tour-list row">
+      <% @activity.tours.each do |tour| %>
+      <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
+      <div class="tour-card m-3" style="width: 18rem;">
+        <%= cl_image_tag tour.photo %>
+        <div class="tour-card-body">
+          <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
+          <span class="tour-card-like">
+            <% if guest_user.likes?(tour)%>
+            <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "unlike",  remote: true, id: "like_#{tour.id}", method: "GET" %></object><span class="tooltiptext">Save for later</span>
+            <%else%>
+            <object><%= link_to raw('<i class="far fa-heart"></i>'), likes_path(tour), class: "like",  remote: true, id: "like_#{tour.id}", method: "GET" %></object><span class="tooltiptext">Save for later</span>
+            <%end%>
+          </span>
 
-  <h1><%= @activity.name %></h1>
-  <%= cl_image_tag @activity.photo, height: 250, width: 250, crop: :fill %> <br />
-  <p><strong>Summary:</strong> <%= @activity.summary.html_safe%></p>
-  <%if user_signed_in?%>
-  <div>
-    <% if policy(@activity).edit? %>
-      <%= link_to "Edit", edit_activity_path(@activity), class: "btn btn-info" %>
+        </div>
+
+        <ul class="tour-card-list">
+          <li>
+            <span class="icon"><%= image_tag "pinpoint.svg"%></span>
+            <span class="name"><%= tour.location.country.name  %></span>
+          </li>
+          <li>
+            <span class="icon"><%= cl_image_tag tour.activity.photo%></span>
+            <span class="name"><%= tour.activity.name%></span>
+          </li>
+          <li>
+            <span class="icon"><%= image_tag "price.png"%></span>
+            <span class="name">US$ <%= tour.price %></span>
+          </li>
+          <li>
+            <span class="icon"><%= image_tag "calendar1.svg"%></span>
+            <span class="name"><%= tour.duration.first(6) %></span>
+          </li>
+        </ul>
+        <%if user_signed_in?%>
+        <div class="card-body">
+          <% if policy(Activity).edit? %>
+          <%= link_to raw('<i class="far fa-edit"></i>'), edit_tour_path(tour), class: "mr-2" %>
+          <%end%>
+          <% if policy(Activity).destroy? %>
+          <%= link_to raw('<i class="far fa-trash-alt"></i>'), tour_path(tour), method: "delete", data: { confirm: "Are you sure you want to delete '#{tour.name}'?" } %>
+          <%end%>
+        </div>
+        <%end%>
+      </div>
       <%end%>
-      <% if policy(@activity).destroy? %>
-      <%= link_to "Delete", activity_path(@activity),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@activity.name}'?" } %>
+      <%end%>
+    </div>
+    <span class="button my-3"><%= link_to raw('see more tours  <i class="fas fa-long-arrow-alt-right"></i>'), tag_path("#{@activity.name}"), class: "btn-arrow" %></span>
+  </div>
+  <div class="tailor-link-banner">
+    <div class="title">
+      <h3>Craft Your Own Adventure</h3>
+    </div>
+    <div class="link">
+      <div class="text"><p>We can tailor make your adventure exactly how you want it. Whether it's tweaking an existing itinerary, or creating your own unique one!</p></div>
+      <span class="button"><%= link_to raw('TAILOR TOUR <i class="fas fa-long-arrow-alt-right"></i>'), new_tailortour_path, class: "btn-arrow" %></span>
+    </div>
+  </div>
+  <div class="country-locations">
+    <h4 class="title">Browse More Country</h4>
+    <span class="break-point"><%= image_tag "pinpoint.svg"%></span>
+    <div class="cards-locations">
+      <% Country.all.each do |country| %>
+      <div class="card">
+        <%= link_to country_path(country),class:"country-card", :action => 'go' do %>
+        <%= cl_image_tag country.photo, class: "img-responsive" %>
+        <div class="carousel-caption">
+          <h4 class="country-card-title"><%= country.name%></h4>
+          <p><%= pluralize(country.locations.count, "location") %> </p>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+<%if user_signed_in? %>
+  <div>
+    <% if policy(@location).edit? %>
+      <%= link_to "Edit", edit_location_path(@location), class: "btn btn-info" %>
+      <%end%>
+      <% if policy(@location).destroy? %>
+      <%= link_to "Delete", location_path(@location),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@location.name}'?" } %>
       <%end%>
   </div>
   <%end%>
-</div>
+
+
+
