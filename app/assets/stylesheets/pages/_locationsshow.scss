@@ -1,0 +1,62 @@
+.panel-photo {
+  position: relative;
+  img {
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+  }
+  .location-show-title {
+    position: absolute;
+    letter-spacing: 3px;
+    z-index: 1;
+    color: #fff;
+    width: 50vw;
+    top: 30px;
+    left: 310px;
+    text-align: center;
+    img {
+    width: 40vw;
+    height: auto;
+    margin-bottom: 16px;
+    }
+    .icon {
+      display: inline-block;
+    }
+  }
+}
+
+.location-main {
+  .summary {
+    width: 50vw;
+    margin: 16px auto;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .tours-list {
+    margin: 28px auto;
+    padding-top: 28px;
+    text-align: center;
+    border-top: solid 1px #bfbfbf;
+    .title {
+      color: #db9628;
+      text-transform: uppercase;
+      margin-bottom: 28px
+    }
+    .all-tour-list, .country-tour-list {
+      margin: 16px auto;
+      width: 75vw;
+    }
+  }
+  .country-locations {
+    padding-top: 28px;
+    margin: 28px auto;
+    width: 90vw;
+    text-align: center;
+    .title {
+      color: #db9628;
+      text-transform: uppercase;
+    }
+
+  }
+}
