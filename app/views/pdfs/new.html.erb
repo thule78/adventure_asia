@@ -1,0 +1,10 @@
+<div class="booing-index-wrapper col-md-9 offset-md-2">
+  <h4><%= @tour.name%></h4>
+  <p>Tour Id: <%= @tour.code%></p>
+  <p> All the essential tour details you need in one place.</p>
+  <p>Fill in tour details below to access your tour Factsheet.</p>
+  <div class="form">
+    <%= render 'form', pdf: @pdf %>
+  </div>
+</div>
+

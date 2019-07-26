@@ -12,7 +12,7 @@ class PdfsController < ApplicationController
   def new
     @pdf = Pdf.new
     authorize @pdf
-    @pdf = Pdf.find(params[:tour_id])
+    @tour = Tour.find(params[:tour_id])
   end
 
   def update
@@ -25,13 +25,13 @@ class PdfsController < ApplicationController
   def create
     @pdf = Pdf.new(pdf_params)
     authorize @pdf
-    @pdf = Pdf.find(params[:tour_id])
+    @tour = Tour.find(params[:tour_id])
     @pdf.tour = @tour
 
     if @pdf.save
       # mail = BookingMailer.with(booking: @booking).request
       # mail.deliver_now
-      redirect_to tour_path, notice: "Fact sheet was sending to your email"
+      redirect_to tours_path, notice: "PDF file was sending to your email"
     else
       render :new
     end

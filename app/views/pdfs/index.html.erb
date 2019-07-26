@@ -1,0 +1,15 @@
+<div class="tailortour-container">
+   <h2>Factsheet Request</h2>
+  <% @pdfs.each do |pdf|%>
+
+  <div class="tailor_tour">
+
+    <h4><%= pdf.tour.name %></h4>
+    <p>code: <%= pdf.tour.code %></p>
+    Name: <strong><%= pdf.name %></strong>
+    Email: <strong><%= pdf.email %></strong>
+    <p>Sent on: <%= pdf.created_at%></p>
+  </div>
+
+  <% end %>
+</div>

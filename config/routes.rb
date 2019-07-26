@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   resources :locations, only: [:index, :show, :new, :create, :update, :destroy, :edit]
   resources :tours, only: [:index, :show, :new, :create, :update, :destroy, :edit] do
     resources :bookings, only: [:create, :new]
-    resources :pdf, only: [:create, :new]
+    resources :pdfs, only: [:create, :new]
 
   end
   resources :bookings, only: [:update, :destroy, :index, :show]
+  resources :pdfs, only: [:update, :destroy, :index, :show]
 
   namespace :providers do
     resources :bookings, only: [:index, :update, :destroy]

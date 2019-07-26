@@ -109,7 +109,7 @@
         </div>
         <div class="links col-md-4">
           <span><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
-          <span class="btn-arrow">DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i></span>
+          <span><%= link_to raw('DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_pdf_path(@tour), class: "btn-arrow" %></span>
           <span class="btn-arrow">
             <% if guest_user.likes?(@tour)%>
             <%= link_to raw('SAVE THIS TOUR <i class="fas fa-long-arrow-alt-right"></i>'), unlikes_path(@tour) %>
