@@ -24,11 +24,10 @@ class Tour < ApplicationRecord
   #attr_accessor :content, :tag_list
   acts_as_likeable
 
-  # uncommend it when need to use
   # include PgSearch
   # pg_search_scope :search_for_tour,
   #   against: [:name, :duration, :style, :theme, :comfort],
-  #   associated_against: {:tags => [:name]},
+  #   associated_against: {:tags => [:name], :location => :name, :country => :name},
   #   using: {
   #     tsearch: { prefix: true }
   #   }

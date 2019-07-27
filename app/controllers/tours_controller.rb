@@ -1,8 +1,8 @@
 class ToursController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :likes, :unlikes]
 
-
   def index
+    # tags_search
     if params[:tags].present?
       @tours = Tour.all.tagged_with(params[:tags])
       tours = policy_scope(Tour).order(created_at: :desc)
@@ -79,6 +79,16 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     authorize @tour
   end
+
+  # pg_search
+  # def index
+  #   if params[:query].present?
+  #     tours = policy_scope(Tour).order(created_at: :asc)
+  #     @tours = tours.search_for_tour(params[:query])
+  #   else
+  #     @tours = policy_scope(Tour).order(created_at: :desc)
+  #   end
+  # end
 
   def tour_params
     params.require(:tour).permit(:name, :content, :itinerary, :price, :code,

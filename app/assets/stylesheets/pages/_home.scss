@@ -15,8 +15,25 @@
     position: absolute;
     z-index: 1;
     width: 50vw;
-    top: 180px;
+    top: 100px;
     left: 300px;
+    .hometitle {
+      margin: auto;
+      text-align: center;
+      h1 {
+        color: white;
+        font-size: 48px;
+        text-transform: uppercase;
+      }
+      h4 {
+        color: white;
+        font-size: 32px;
+      }
+    }
+    .homesearch {
+      width: 50vw;
+      text-align: center;
+    }
   }
 }
 
@@ -130,6 +147,23 @@
     width: 70vw;
     top: 180px;
     left: 25px;
+    .hometitle {
+      margin: auto;
+      text-align: center;
+      h1 {
+        color: white;
+        font-size: 24px;
+        text-transform: uppercase;
+      }
+      h4 {
+        color: white;
+        font-size: 16px;
+      }
+    }
+    .homesearch {
+      width: 70vw;
+      margin: auto;
+    }
   }
 }
 

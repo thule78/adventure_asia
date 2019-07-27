@@ -14,8 +14,34 @@
         <% end %>
       </div>
     </div>
-    <!-- <div class="home-search">
-      <%= form_for Tour.new, url: tours_path(anchor: 'tours'), method: :get do %>
+   <div class="home-search">
+    <div class="hometitle">
+      <h1>your to explore</h1>
+      <h4>select your interesting adventure with us</h4>
+    </div>
+    <div class="homesearch">
+      <p>
+        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          OPEN SEARCH
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <%= simple_form_for(:search, url: tours_path, method: "GET") do |f| %>
+          <div id="tag_cloud">
+            <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
+            <label class="btn btn-outline-warning"><%= check_box_tag 'tags[]', (tag.name), false, class: "badgebox", id: "search"  %>
+              <span><%= tag.name %></span></label>
+              <%end%>
+            </div>
+            <%= f.submit "Search", class: "btn btn-info" %>
+            <%= link_to "Reset", root_path, class: "btn btn-outline-info"  %>
+            <%end%>
+        </div>
+      </div>
+    </div><!-- end search -->
+
+      <!-- <%= form_for Tour.new, url: tours_path(anchor: 'tours'), method: :get do %>
         <div class="d-flex">
           <%= text_field_tag :query,
             params[:query],
@@ -24,8 +50,10 @@
           %>
           <%= button_tag "Go!", class: "btn btn-info" %>
         </div>
-      <% end %>
-    </div> -->
+      <% end %>-->
+
+
+    </div>
   </div>
 </div>
 <div class="home-wrapper">

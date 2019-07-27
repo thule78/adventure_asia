@@ -33,4 +33,8 @@ class TourPolicy < ApplicationPolicy
     true
   end
 
+  def search?
+    true
+  end
+
 end

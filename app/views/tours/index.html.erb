@@ -4,7 +4,7 @@
       <a href="javascript:void(0)" class="closebtn" id="close">Close <i class="fas fa-times-circle"></i></a>
       <div class="search_form">
         <h5 class="title">Select your interesting</h5>
-        <%= simple_form_for(:index, url: tours_path, method: "GET", id: "search_form") do |f| %>
+        <%= simple_form_for(:search, url: tours_path, method: "GET", id: "search_form") do |f| %>
         <div id="tag_cloud" class="custom-control custom-checkbox">
           <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
           <label class="btn btn-outline-warning"><%= check_box_tag 'tags[]', (tag.name), false, class: "badgebox", id: "search"  %>
@@ -50,7 +50,7 @@
         </button>
         <!-- Modal -->
         <div class="modal fade" id="visa" tabindex="-1" role="dialog" aria-labelledby="visaTitle" aria-hidden="true" data-backdrop="false">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="visaTitle">Visa Permit:</h5>
@@ -77,7 +77,7 @@
         </button>
         <!-- Modal -->
         <div class="modal fade" id="weather" tabindex="-1" role="dialog" aria-labelledby="weatherTitle" aria-hidden="true" data-backdrop="false">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="weatherTitle">Weather & Climate</h5>
@@ -104,7 +104,7 @@
         </button>
         <!-- Modal -->
         <div class="modal fade" id="festival" tabindex="-1" role="dialog" aria-labelledby="festivalTitle" aria-hidden="true" data-backdrop="false">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="festivalTitle">Festival & Events</h5>
@@ -131,7 +131,7 @@
         </button>
         <!-- Modal -->
         <div class="modal fade" id="local" tabindex="-1" role="dialog" aria-labelledby="localTitle" aria-hidden="true" data-backdrop="false">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="localTitle">Local Custom</h5>
