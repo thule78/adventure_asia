@@ -1,6 +1,6 @@
 <div class="panel-photo">
     <%= cl_image_tag @location.photo %>
-    <div class="location-show-title">
+    <div class="page-show-title">
       <span class="icon"><%= cl_image_tag @location.country.icon %></span>
       <span class="name"><h1><%= @location.name %>-<%= @location.country.name %></h1></span>
     </div>
@@ -60,7 +60,7 @@
       <!-- end modal -->
     </div>
   </div>
-  <div class="location-main col-12" id="main">
+  <div class="show-main col-12" id="main">
     <button class="openbtn" id="open">Open More <i class="fas fa-align-left"></i></button>
     <div class="summary">
       <%= @location.summary.first(250).html_safe%>
@@ -128,7 +128,7 @@
       <span class="button"><%= link_to raw('TAILOR TOUR <i class="fas fa-long-arrow-alt-right"></i>'), new_tailortour_path, class: "btn-arrow" %></span>
     </div>
   </div>
-  <div class="country-locations">
+  <div class="show-locations">
     <h4 class="title">Browse More Country</h4>
     <span class="break-point"><%= image_tag "pinpoint.svg"%></span>
     <div class="cards-locations">

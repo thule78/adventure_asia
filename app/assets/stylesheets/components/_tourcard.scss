@@ -150,20 +150,3 @@
       }
     }
 }
-
-//tailor link banner
-
-.tailor-link-banner {
-  display: flex;
-  width: 80vw;
-  margin: 40px auto;
-  background: #FAEDD9 50%;
-
-  .title, .link {
-    color: #db9628;
-    padding: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-}
