@@ -1,6 +1,6 @@
 <div class="panel-photo">
     <%= cl_image_tag @activity.photo %>
-    <div class="page-show-title">
+    <div class="activity-show-title">
       <span class="icon"><%= cl_image_tag @activity.icon %></span>
       <span class="name"><h1><%= @activity.name %></h1></span>
     </div>
@@ -148,11 +148,11 @@
 </div>
 <%if user_signed_in? %>
   <div>
-    <% if policy(@location).edit? %>
-      <%= link_to "Edit", edit_location_path(@location), class: "btn btn-info" %>
+    <% if policy(@activity).edit? %>
+      <%= link_to "Edit", edit_activity_path(@activity), class: "btn btn-info" %>
       <%end%>
-      <% if policy(@location).destroy? %>
-      <%= link_to "Delete", location_path(@location),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@location.name}'?" } %>
+      <% if policy(@activity).destroy? %>
+      <%= link_to "Delete", location_path(@activity),class: "btn btn-outline-info", method: "delete", data: { confirm: "Are you sure you want to delete '#{@activity.name}'?" } %>
       <%end%>
   </div>
   <%end%>
