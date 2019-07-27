@@ -109,12 +109,52 @@
         </div>
         <div class="links col-md-4">
           <span><%= link_to raw('SEND INQUIRY <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_booking_path(@tour), class: "btn-arrow" %></span>
-          <span><%= link_to raw('DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i>'), new_tour_pdf_path(@tour), class: "btn-arrow" %></span>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#factsheetScrollable">
+            DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="factsheetScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="factsheetScrollableTitle">DOWN LOAD FACT SHEET REQUEST</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for [@tour, @pdf] do |f|%>
+                  <% if @pdf.errors.any? %>
+                  <div>
+                    <ul>
+                      <% pdf.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <% end %>
+                  <div class="form-group col-12 col-md-6">
+                    <%= f.input :name, label: 'Your Name', class: 'form-control'%>
+                  </div>
+                  <div class="form-group col-12 col-md-6">
+                    <%= f.input :email, label: 'Where should we send a PDF to? (We will not spam you)', placeholder: "email address", class: 'form-control'%>
+                  </div>
+
+                  <%= f.submit "Get Factsheet", class: 'btn btn-info' %>
+                  <%= f.button :button, 'Reset', type: :reset, class: 'btn btn-outline-info' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end Modal -->
           <span class="btn-arrow">
             <% if guest_user.likes?(@tour)%>
             <%= link_to raw('SAVE THIS TOUR <i class="fas fa-long-arrow-alt-right"></i>'), unlikes_path(@tour) %>
             <%else%>
-            <%= link_to raw('SAVE THIS TOUR <i class="fas fa-long-arrow-alt-right"></i>'), likes_path(@tour) %>
+            <%= link_to raw('ALREADY SAVED <i class="fas fa-long-arrow-alt-right"></i>'), likes_path(@tour) %>
             <%end%>
           </span>
         </div>
@@ -127,9 +167,53 @@
           <p><%= @tour.itinerary.html_safe%></p>
         </div>
         <div class="itinerary-photos col-md-4">
-          <span class="btn-arrow">DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i></span>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-arrow" data-toggle="modal" data-target="#factsheet-itiScrollable">
+            DOWN LOAD FACT SHEET <i class="fas fa-long-arrow-alt-right"></i>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="factsheet-itiScrollable" tabindex="-1" role="dialog" aria-labelledby="factsheet-itiModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="factsheet-itiScrollableTitle">DOWN LOAD FACT SHEET REQUEST</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for [@tour, @pdf] do |f|%>
+                  <% if @pdf.errors.any? %>
+                  <div>
+                    <ul>
+                      <% pdf.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <% end %>
+                  <div class="form-group col-12 col-md-6">
+                    <%= f.input :name, label: 'Your Name', class: 'form-control'%>
+                  </div>
+                  <div class="form-group col-12 col-md-6">
+                    <%= f.input :email, label: 'Where should we send a PDF to? (We will not spam you)', placeholder: "email address", class: 'form-control'%>
+                  </div>
+
+                  <%= f.submit "Get Factsheet", class: 'btn btn-info' %>
+                  <%= f.button :button, 'Reset', type: :reset, class: 'btn btn-outline-info' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end Modal -->
+
           <div class="photos">
             <%= cl_image_tag @tour.photo %>
+            <%= cl_image_tag @tour.photo_1 %>
+            <%= cl_image_tag @tour.photo_2 %>
           </div>
         </div>
       </div>
@@ -243,7 +327,7 @@
               <span class="name"><%= tour.location.country.name  %></span>
             </li>
             <li>
-              <span class="icon"><%= cl_image_tag tour.activity.photo%></span>
+              <span class="icon"><%= cl_image_tag tour.activity.icon%></span>
               <span class="name"><%= tour.activity.name%></span>
             </li>
             <li>

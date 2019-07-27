@@ -31,9 +31,9 @@ class PdfsController < ApplicationController
     if @pdf.save
       # mail = BookingMailer.with(booking: @booking).request
       # mail.deliver_now
-      redirect_to tours_path, notice: "PDF file was sending to your email"
+      redirect_to tour_path(@pdf.tour), notice: "PDF file was sending to your email"
     else
-      render :new
+      render template: 'tours/show', alert: 'Invalid information.'
     end
   end
 

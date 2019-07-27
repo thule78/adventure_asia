@@ -14,6 +14,7 @@ class ToursController < ApplicationController
   def show
     set_tour
     @related_tours = @tour.find_related_tags
+    @pdf = Pdf.new
   end
 
   def new
