@@ -4,4 +4,5 @@ class Activity < ApplicationRecord
   validates :photo, presence: true
 
   mount_uploader :photo, PhotoUploader
+  mount_uploader :icon, PhotoUploader
 end

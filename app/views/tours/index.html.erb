@@ -157,7 +157,7 @@
     <div class="tour-result col-md-12" id="main">
       <button class="openbtn" id="open">Open More <i class="fas fa-align-left"></i></button>
       <div class="top">
-        <div class="tour-count"></div>
+        <div class="tour-count">We found: <%= pluralize(@tours.count, "tour") %> match your criteria</div>
         <div class="search-key"></div>
       </div>
 
