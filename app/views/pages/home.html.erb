@@ -47,8 +47,17 @@
   <div class="promo-countdown">
     <div class="main">
       <div class="promo-text">
-        <h3>Exclusive For you only</h3>
-        <p>Exclusive just for you only, our Adventure Asia customer. Will open on 7<sup>th</sup> Of August. Don't miss it.  </p>
+        <ul  class="row activity m-3 col-md-10 col-12" >
+          <% Activity.all.each do |activity|%>
+
+          <li>
+            <%= link_to activity_path(activity),:action => 'go' do %>
+            <span class="icon"><%= cl_image_tag activity.icon%></span>
+            <span class="text"><%= activity.name.upcase%></span>
+            <%end%>
+          </li>
+          <%end%>
+        </ul>
       </div>
 
     </div>

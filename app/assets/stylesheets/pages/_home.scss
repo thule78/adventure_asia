@@ -80,16 +80,15 @@
 }
 
 .promo-countdown {
-  margin: 16px auto;
-  padding: 20px 30px;
+  margin: auto;
+  padding: 0px 30px;
   width: 100vw;
-  background-color: #FAEDD9;
     .main {
     width: 85vw;
     position: relative;
     margin: auto;
-    overflow: hidden;
     text-align: center;
+    padding-left: 150px;
     }
       h3 {
         text-align: center;
@@ -105,25 +104,6 @@
       text-transform: uppercase;
       font-size: 1em;
       margin-top: 5%;
-    }
-
-    .days, .hours, .minutes, .seconds, .left {
-      display: inline-block;
-      padding: 20px;
-      width: 120px;
-      border-radius: 10px;
-    }
-
-    .days, .hours, .minutes, .seconds {
-      background: #FFB20C;
-    }
-
-    .left {
-      background: #DB9628;
-    }
-    .c-number {
-      color: #333;
-      font-size: 5em;
     }
 }
 
