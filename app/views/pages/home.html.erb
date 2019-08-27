@@ -26,33 +26,20 @@
         </button>
       </p>
       <div class="collapse" id="collapseExample">
-        <div class="card card-body">
+        <div class="card card-body" >
           <%= simple_form_for(:search, url: tours_path, method: "GET") do |f| %>
-          <div id="tag_cloud">
+          <div id="tag_cloud" >
             <% tag_cloud Tour.tag_counts_on(:tags).order("name ASC"), %w[s m l] do |tag, css_class| %>
             <label class="btn btn-outline-warning"><%= check_box_tag 'tags[]', (tag.name), false, class: "badgebox", id: "search"  %>
               <span><%= tag.name %></span></label>
               <%end%>
-            </div>
+          </div>
             <%= f.submit "Search", class: "btn btn-info" %>
             <%= link_to "Reset", root_path, class: "btn btn-outline-info"  %>
             <%end%>
         </div>
       </div>
-    </div><!-- end search -->
-
-      <!-- <%= form_for Tour.new, url: tours_path(anchor: 'tours'), method: :get do %>
-        <div class="d-flex">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control mr-2 ml-4",
-            placeholder: "Start exploring destinations and activities"
-          %>
-          <%= button_tag "Go!", class: "btn btn-info" %>
-        </div>
-      <% end %>-->
-
-
+      </div><!-- end search -->
     </div>
   </div>
 </div>
@@ -70,7 +57,7 @@
     <div class="text-content col-12 col-md-4">
       <h2 class="home-title ">recommend by expertise</h2>
       <p>Sed lobortis vestibulum dolor id tincidunt. In hendrerit, sapien ac consequat elementum, ante ante tempor massa, in ullamcorper risus lacus nec nisl</p>
-      <span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
+      <span><%= link_to raw('MORE TOURS <i class="fas fa-long-arrow-alt-right"></i>'), tours_path, class: "btn-arrow" %></span>
     </div>
     <div class="recommend-tour">
       <div class="row">
@@ -118,47 +105,13 @@
   <div class="trending">
     <div class="recommend-tour">
       <div class="row">
-        <% Tour.all.first(2).each do |tour| %>
-        <%= link_to tour_path(tour), class:"content-card", :action => 'go' do %>
-        <div class="tour-card m-3" style="width: 18rem;">
-          <%= cl_image_tag tour.photo %>
-          <div class="tour-card-body">
-            <h2 class="tour-card-title"><%= tour.name.first(20).upcase %></h2>
-            <span class="tour-card-like">
-              <% if guest_user.likes?(tour)%>
-              <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "unlike" %></object><span class="tooltiptext">Save for later</span>
-              <%else%>
-              <object><%= link_to raw('<i class="far fa-heart"></i>'), unlikes_path(tour), class: "like" %></object><span class="tooltiptext">Unsaved</span>
-              <%end%>
-            </span>
-          </div>
 
-          <ul class="tour-card-list">
-            <li>
-              <span class="icon"><%= image_tag "pinpoint.svg"%></span>
-              <span class="name"><%= tour.location.country.name  %></span>
-            </li>
-            <li>
-              <span class="icon"><%= cl_image_tag tour.activity.icon%></span>
-              <span class="name"><%= tour.activity.name%></span>
-            </li>
-            <li>
-              <span class="icon"><%= image_tag "price.png"%></span>
-              <span class="name">US$ <%= tour.price %></span>
-            </li>
-            <li>
-              <span class="icon"><%= image_tag "calendar1.svg"%></span>
-              <span class="name"><%= tour.duration.first(6) %></span>
-            </li>
-          </ul>
-        </div>
-        <%end%>
-        <% end %>
       </div>
     </div>
     <div class="text-content col-12 col-md-4">
-      <h2 class="home-title ">trending destinations</h2>
-      <p>Sed lobortis vestibulum dolor id tincidunt. In hendrerit, sapien ac consequat elementum, ante ante tempor massa, in ullamcorper risus lacus nec nisl</p>
+      <h2 class="home-title ">Global Luxe Adventure Planner</h2>
+      <p>From Antarctica to historic Europe remote lands of Tibet Nepal, Bhutan and Asia</p>
+      <p><strong>Leigh:</strong> Spent 25 years in Asia, been lucky to have been to many remote places including Antartica, Galapagos, remote Hokaiddo enjoy wildlife photography   my favourite places are Normanville beach, Old (muang) Chiangmai, Kyoto and Venice Italy.  </p>
       <span class="btn-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
     </div>
   </div>
